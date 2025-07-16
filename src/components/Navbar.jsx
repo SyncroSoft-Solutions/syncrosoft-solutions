@@ -43,8 +43,15 @@ const Navbar = () => {
       animate="visible"
       className="fixed top-0 z-50 w-full bg-base-100 shadow-md"
     >
+<<<<<<< HEAD
       <div className="flex items-center justify-between px-4 py-2">
         <Logo />
+=======
+      <div className="flex items-center justify-between px-4 scroll-py-3">
+        <div className="max-w-[160px] md:max-w-none">
+          <Logo />
+        </div>
+>>>>>>> 5a6f6f3966853a955660da818c8f9e70af492108
 
         {/* Desktop Menu (Icons only) */}
         <motion.nav
