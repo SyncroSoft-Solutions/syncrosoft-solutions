@@ -1,6 +1,6 @@
 import React from "react";
 
-const Logo = ({ className = "h-12 w-auto text-primary" }) => (
+const Logo = ({ className = "h-14 w-auto text-pretty" }) => (
   <a href="/" className={`flex items-center ${className}`}>
     <svg
       xmlns="http://www.w3.org/2000/svg"
