@@ -32,7 +32,7 @@ read force_push
 # Array of remotes and their host configs
 declare -a remotes=(
     # "git@github-ajaysyncrosoft:ajaysyncrosoft/syncrosoft.git"
-    "git@github-syncrosoft:SyncroSoft-Solutions/SyncroSoft-Portfolio-Website.git"
+    "git@github.com:SyncroSoft-Solutions/syncrosoft-solutions.git"
     # "git@github-ajay120503:Ajay120503/syncrosoft.git"
 )
 
