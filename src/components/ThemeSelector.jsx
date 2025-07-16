@@ -8,7 +8,7 @@ function ThemeSelector() {
 
   return (
     <div className="dropdown dropdown-end drop-shadow-lg">
-      <button tabIndex={0} className="btn btn-md btn-outline btn-neutra btn-circle">
+      <button tabIndex={0} className="btn btn-md btn-outline btn-neutral btn-circle">
         <PaletteIcon />
       </button>
       <div

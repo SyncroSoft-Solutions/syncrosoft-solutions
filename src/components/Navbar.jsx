@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Link, useLocation } from "react-router-dom";
+import ThemeSelector from "./ThemeSelector";
+
 import Logo from "./Logo";
 import {
   Home,
@@ -41,7 +43,7 @@ const Navbar = () => {
       variants={navbarVariants}
       initial="hidden"
       animate="visible"
-      className="fixed top-0 z-50 w-full bg-base-100 shadow-md"
+      className="fixed top-0 z-50 w-full bg-base-100 shadow-md pt-5 pb-4 px-40"
     >
       <div className="flex items-center justify-between px-4 scroll-py-3">
         <Logo />
@@ -72,6 +74,7 @@ const Navbar = () => {
               </Link>
             </motion.div>
           ))}
+          <ThemeSelector />
         </motion.nav>
 
         {/* Mobile Menu Button */}
