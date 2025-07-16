@@ -24,7 +24,7 @@ function App() {
     <div className="relative w-screen overflow-x-hidden bg-base-100" data-theme={theme}>
       <Toaster position="top-right" reverseOrder={false} />
       <BrowserRouter>
-        <div className="fixed top-20 right-3 z-40">
+        <div className="fixed top-20 right-3 z-50">
           <ThemeSelector />
         </div>
         <div className="relative z-40">
