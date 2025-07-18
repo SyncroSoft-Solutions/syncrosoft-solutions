@@ -16,7 +16,6 @@ const services = [
   { icon: ShieldCheck, title: "Cybersecurity", description: "Protect your systems and data with our advanced security solutions and audits." },
   { icon: ServerCog, title: "API Development", description: "Custom RESTful and GraphQL APIs for seamless integration and scalable services." },
   { icon: Globe2, title: "E-Commerce Solutions", description: "Build secure, fast, and user-friendly online stores with seamless payment gateways." },
-  { icon: MessageCircle, title: "Customer Support Systems", description: "Integrate modern live chat, ticketing, and CRM systems for better customer experience." },
 ];
 
 // Alternate from left or right
@@ -56,7 +55,7 @@ const Services = () => {
   return (
     <section id="services" className="h-screen w-full bg-base-100 overflow-y-auto ">
       <SEO title="Services" description="" keywords="" />
-      <div className="w-full min-h-screen overflow-hidden px-6 md:px-16 py-10 pt-20">
+      <div className="w-full min-h-screen overflow-hidden px-6 md:px-16 pt-20">
 
         {/* Heading */}
         <motion.h1
@@ -64,7 +63,7 @@ const Services = () => {
           whileInView={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.7, ease: "easeOut" }}
           viewport={{ once: true }}
-          className="text-4xl w-full py-4 top-12 absolute z-40 left-0 backdrop-blur-3xl justify-center md:text-5xl lg:text-6xl font-bold text-center text-base-content"
+          className="text-4xl w-full py-3 top-12 absolute z-40 left-0 backdrop-blur-3xl justify-center md:text-5xl lg:text-6xl font-bold text-center text-base-content"
         >
           Our{" "}
           <span className="text-primary inline-flex overflow-hidden">
@@ -78,13 +77,13 @@ const Services = () => {
           initial="initial"
           whileInView="animate"
           viewport={{ once: true }}
-          className="max-w-[1280px] mt-28 w-full mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-6 md:gap-8"
+          className="max-w-[1280px] mt-24 w-full mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-6 md:gap-8"
         >
           {services.map((service, index) => (
             <motion.div
               key={index}
               variants={getCardVariants(index)}
-              className="card bg-base-200 shadow-lg p-5 rounded-2xl group hover:shadow-xl hover:scale-[1.03] transition-all duration-300 relative"
+              className="card bg-base-200 shadow-lg p-5  mb-3 rounded-2xl group hover:shadow-xl hover:scale-[1.03] transition-all duration-300 relative"
               whileHover={{ y: -4 }}
             >
               {/* Background glow on hover */}
