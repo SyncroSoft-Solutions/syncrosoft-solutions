@@ -54,7 +54,7 @@ const Services = () => {
   return (
     <section id="services" className="h-screen w-full bg-base-100 overflow-y-auto">
       <SEO title="Services" description="" keywords="" />
-      <div className="w-full min-h-screen overflow-hidden px-6 md:px-16 pt-20">
+      <div className="w-full min-h-screen overflow-hidden px-6 md:px-16 py-20">
 
         {/* Heading */}
         <motion.h1
