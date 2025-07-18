@@ -36,7 +36,6 @@ const badgeColors = [
   "error",
 ];
 
-// Animation config
 const getCardVariants = (index) => {
   const isLeft = index % 2 === 0;
   return {
@@ -64,103 +63,103 @@ const containerVariants = {
 
 const Projects = () => {
   return (
-    <section
-      id="projects"
-      className="h-screen w-full bg-base-100 px-4 md:px-12 py-24 overflow-y-auto"
-    >
+    <section id="projects" className="min-h-screen w-full bg-base-100">
       <SEO title="Projects" description="Explore our past work" keywords="MERN, Portfolio, Projects" />
 
-      {/* Heading */}
-      <motion.h1
-        initial={{ y: 50, opacity: 0 }}
-        whileInView={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.6, ease: "easeOut" }}
-        viewport={{ once: true }}
-        className="text-4xl md:text-5xl lg:text-6xl font-bold text-center text-base-content mb-12"
-      >
-        Our <span className="text-primary">Team Work</span>
-      </motion.h1>
+      <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 py-24">
 
-      {/* Project Grid */}
-      <motion.div
-        variants={containerVariants}
-        initial="initial"
-        whileInView="animate"
-        viewport={{ once: true }}
-        className="max-w-7xl overflow-hidden mx-auto grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-10"
-      >
-        {projects.map((project, index) => (
-          <motion.div
-            key={index}
-            variants={getCardVariants(index)}
-            className="group relative rounded-xl border border-base-content/10 bg-base-200/70 backdrop-blur-lg shadow-xl hover:-translate-y-1.5 transition-all duration-500 overflow-hidden"
-            whileHover={{ y: -6 }}
-          >
-            {/* Image */}
-            <div className="relative overflow-hidden">
-              <img
-                src={project.image}
-                alt={project.name}
-                className="w-full h-60 object-cover transition-transform duration-700 group-hover:scale-110"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10" />
-              <h2 className="absolute bottom-4 left-4 text-white text-lg font-bold z-20">
-                {project.name}
-              </h2>
+        {/* Heading */}
+        <motion.h1
+          initial={{ y: 50, opacity: 0 }}
+          whileInView={{ y: 0, opacity: 1 }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+          viewport={{ once: true }}
+          className="text-4xl w-full py-3 top-12 fixed z-40 left-0 backdrop-blur-3xl justify-center md:text-5xl lg:text-6xl font-bold text-center text-base-content"
+        >
+          Our <span className="text-primary inline-flex overflow-hidden">Team Work</span>
+        </motion.h1>
 
-              {/* Top-left tech badges */}
-              <div className="absolute top-4 left-4 flex flex-wrap gap-1 z-20">
-                {project.tech.split(",").slice(0, 3).map((stack, i) => (
-                  <span
-                    key={i}
-                    className={`badge badge-${badgeColors[i % badgeColors.length]} badge-sm`}
+        {/* Project Grid */}
+        <motion.div
+          variants={containerVariants}
+          initial="initial"
+          whileInView="animate"
+          viewport={{ once: true }}
+          className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-10 mt-24"
+        >
+          {projects.map((project, index) => (
+            <motion.div
+              key={index}
+              variants={getCardVariants(index)}
+              className="group relative rounded-xl border border-base-content/10 bg-base-200/70 backdrop-blur-lg shadow-xl hover:-translate-y-1.5 transition-all duration-500 overflow-hidden"
+              whileHover={{ y: -6 }}
+            >
+              {/* Image */}
+              <div className="relative overflow-hidden">
+                <img
+                  src={project.image}
+                  alt={project.name}
+                  className="w-full h-60 object-cover transition-transform duration-700 group-hover:scale-110"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10" />
+                <h2 className="absolute bottom-4 left-4 text-white text-lg font-bold z-20">
+                  {project.name}
+                </h2>
+
+                {/* Tech badges top left */}
+                <div className="absolute top-4 left-4 flex flex-wrap gap-1 z-20">
+                  {project.tech.split(",").slice(0, 3).map((stack, i) => (
+                    <span
+                      key={i}
+                      className={`badge badge-${badgeColors[i % badgeColors.length]} badge-sm`}
+                    >
+                      {stack.trim()}
+                    </span>
+                  ))}
+                </div>
+              </div>
+
+              {/* Card Body */}
+              <div className="p-5 space-y-4">
+                <p className="text-base-content/80 text-sm leading-relaxed font-medium">
+                  {project.description}
+                </p>
+
+                <div className="flex flex-wrap gap-2">
+                  {project.tech.split(",").map((stack, i) => (
+                    <div
+                      key={i}
+                      className={`badge badge-outline badge-${badgeColors[i % badgeColors.length]} text-xs`}
+                    >
+                      {stack.trim()}
+                    </div>
+                  ))}
+                </div>
+
+                {/* Action Buttons */}
+                <div className="flex justify-center gap-3 pt-3">
+                  <a
+                    href={project.github}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="btn btn-sm btn-outline btn-primary"
                   >
-                    {stack.trim()}
-                  </span>
-                ))}
-              </div>
-            </div>
-
-            {/* Body */}
-            <div className="p-5 space-y-4">
-              <p className="text-base-content/80 text-sm leading-relaxed font-medium">
-                {project.description}
-              </p>
-
-              <div className="flex flex-wrap gap-2">
-                {project.tech.split(",").map((stack, i) => (
-                  <div
-                    key={i}
-                    className={`badge badge-outline badge-${badgeColors[i % badgeColors.length]} text-xs`}
+                    <Github size={18} />
+                  </a>
+                  <a
+                    href={project.live}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="btn btn-sm btn-primary"
                   >
-                    {stack.trim()}
-                  </div>
-                ))}
+                    <ExternalLink size={18} />
+                  </a>
+                </div>
               </div>
-
-              {/* Action Buttons */}
-              <div className="flex justify-center gap-3 pt-3">
-                <a
-                  href={project.github}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="btn btn-sm btn-outline btn-primary"
-                >
-                  <Github size={18} />
-                </a>
-                <a
-                  href={project.live}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="btn btn-sm btn-primary"
-                >
-                  <ExternalLink size={18} />
-                </a>
-              </div>
-            </div>
-          </motion.div>
-        ))}
-      </motion.div>
+            </motion.div>
+          ))}
+        </motion.div>
+      </div>
     </section>
   );
 };

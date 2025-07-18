@@ -1,8 +1,8 @@
 import React from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import {
-  Code2, Smartphone, Paintbrush, CloudCog, BarChart4, Users2,
-  ShieldCheck, ServerCog, Globe2, MessageCircle
+  Code2, Smartphone, Paintbrush, CloudCog, BarChart4, ShieldCheck,
+  ServerCog, Globe2,
 } from "lucide-react";
 import SEO from "../components/SEO";
 
@@ -17,7 +17,6 @@ const services = [
   { icon: Globe2, title: "E-Commerce Solutions", description: "Build secure, fast, and user-friendly online stores with seamless payment gateways." },
 ];
 
-// Alternate from left or right
 const getCardVariants = (index) => {
   const isLeft = index % 2 === 0;
   return {
@@ -52,9 +51,10 @@ const Services = () => {
   const yParallax = useTransform(scrollYProgress, [0, 1], [0, -50]);
 
   return (
-    <section id="services" className="h-screen w-full bg-base-100 overflow-y-auto">
-      <SEO title="Services" description="" keywords="" />
-      <div className="w-full min-h-screen overflow-hidden px-6 md:px-16 py-20">
+    <section id="services" className="min-h-screen w-full bg-base-100">
+      <SEO title="Services" description="What we offer" keywords="Web Development, App, UI/UX, MERN" />
+
+      <div className="w-full max-w-7xl mx-auto px-4 sm:px-8 lg:px-12 py-24">
 
         {/* Heading */}
         <motion.h1
@@ -62,52 +62,48 @@ const Services = () => {
           whileInView={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.7, ease: "easeOut" }}
           viewport={{ once: true }}
-          className="text-4xl w-full py-3 top-12 absolute z-40 left-0 backdrop-blur-3xl justify-center md:text-5xl lg:text-6xl font-bold text-center text-base-content"
+          className="text-4xl w-full py-3 top-12 fixed z-40 left-0 backdrop-blur-3xl justify-center md:text-5xl lg:text-6xl font-bold text-center text-base-content"
         >
           Our{" "}
-          <span className="text-primary inline-flex overflow-hidden">
-            Services
-          </span>
+          <span className="text-primary inline-flex overflow-hidden">Services</span>
         </motion.h1>
 
-        {/* Services Grid */}
+        {/* Grid */}
         <motion.div
           variants={containerVariants}
           initial="initial"
           whileInView="animate"
           viewport={{ once: true }}
-          className="max-w-[1280px] mt-24 w-full mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-6 md:gap-8"
+          className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-6 md:gap-8 mt-24"
         >
           {services.map((service, index) => (
             <motion.div
               key={index}
               variants={getCardVariants(index)}
-              className="card bg-base-200 shadow-lg p-5  mb-3 rounded-2xl group hover:shadow-xl hover:scale-[1.03] transition-all duration-300 relative"
+              className="card bg-base-200 shadow-lg p-5 mb-3 rounded-2xl group hover:shadow-xl hover:scale-[1.03] transition-all duration-300 relative"
               whileHover={{ y: -4 }}
             >
-              {/* Background glow on hover */}
-              <div className="absolute inset-0 bg-primary/5 opacity-0 group-hover:opacity-100 transition duration-300 rounded-2xl pointer-events-none"></div>
+              {/* Glow on hover */}
+              <div className="absolute inset-0 bg-primary/5 opacity-0 group-hover:opacity-100 transition duration-300 rounded-2xl pointer-events-none" />
 
-              {/* Icon with parallax */}
+              {/* Icon */}
               <motion.div
                 style={{ y: yParallax }}
                 whileHover={{ rotate: [0, 5, -5, 0] }}
                 className="flex items-center justify-center w-14 h-14 rounded-full bg-primary/10 mb-4 mx-auto relative overflow-visible"
               >
-                {/* Pulse Glow Effect */}
+                {/* Glow Pulse */}
                 <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-0">
                   <div className="w-20 h-20 rounded-full opacity-0 group-hover:opacity-100 animate-pulse-slow bg-gradient-to-r from-primary via-accent to-secondary blur-2xl"></div>
                 </div>
-
-                {/* Icon */}
+                {/* Icon Element */}
                 {React.createElement(service.icon, {
                   className: "w-9 h-9 text-primary relative z-10",
                 })}
               </motion.div>
 
-              <h2 className="text-lg font-semibold text-center text-base-content">
-                {service.title}
-              </h2>
+              {/* Title + Description */}
+              <h2 className="text-lg font-semibold text-center text-base-content">{service.title}</h2>
               <p className="text-sm text-center text-base-content/80 mt-2 leading-relaxed">
                 {service.description}
               </p>
