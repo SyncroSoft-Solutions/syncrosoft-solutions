@@ -47,6 +47,10 @@ function AppContent() {
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, [location.pathname]);
 
+  useEffect(() => {
+  window.scrollTo(0, 0);
+}, [location.pathname]);
+
   return (
     <>
       <Navbar />

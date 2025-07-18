@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import toast from "react-hot-toast";
 import emailjs from "emailjs-com";
 import Footer from '../components/Footer.jsx';
+import SEO from '../components/SEO';
 
 const Contact = () => {
   const [form, setForm] = useState({
@@ -42,6 +43,11 @@ const Contact = () => {
 
   return (
     <section id="contact" className="w-full h-screen flex flex-col lg:flex-row overflow-hidden">
+      <SEO
+        title="Conctact"
+        description=""
+        keywords=""
+      />
       <motion.div
         initial={{ x: 100, opacity: 0 }}
         animate={{ x: 0, opacity: 1 }}

@@ -46,7 +46,9 @@ const Navbar = () => {
       className="fixed top-0 z-50 w-full bg-base-100 shadow-md pt-5 pb-4 px-40"
     >
       <div className="flex items-center justify-between px-4 scroll-py-3">
-        <Logo />
+        <div className="max-w-[160px] md:max-w-none">
+          <Logo />
+        </div>
 
         {/* Desktop Menu (Icons only) */}
         <motion.nav
