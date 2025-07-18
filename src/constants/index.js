@@ -105,11 +105,11 @@ export const THEMES = [
 //     label: "Dracula",
 //     colors: ["#282a36", "#ff79c6", "#bd93f9", "#f8f8f2"],
 //   },
-  {
-    name: "cmyk",
-    label: "CMYK",
-    colors: ["#f0f0f0", "#0891b2", "#ec4899", "#facc15"],
-  },
+  // {
+  //   name: "cmyk",
+  //   label: "CMYK",
+  //   colors: ["#f0f0f0", "#0891b2", "#ec4899", "#facc15"],
+  // },
 //   {
 //     name: "autumn",
 //     label: "Autumn",
