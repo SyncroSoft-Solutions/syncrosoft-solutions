@@ -2,11 +2,8 @@ import React, { useState } from "react";
 import { motion } from "framer-motion";
 import toast from "react-hot-toast";
 import emailjs from "emailjs-com";
-import Footer from '../components/Footer.jsx';
-<<<<<<< HEAD
-=======
-import SEO from '../components/SEO';
->>>>>>> 5a6f6f3966853a955660da818c8f9e70af492108
+import Footer from "../components/Footer.jsx";
+import SEO from "../components/SEO";
 
 const Contact = () => {
   const [form, setForm] = useState({
@@ -45,23 +42,19 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" className="w-full h-screen flex flex-col lg:flex-row overflow-hidden">
-<<<<<<< HEAD
-=======
+    <section id="contact" className="w-full min-h-screen flex flex-col lg:flex-row overflow-hidden">
       <SEO
-        title="Conctact"
-        description=""
-        keywords=""
+        title="Contact"
+        description="Contact Neoyukti IT Company"
+        keywords="Contact, Neoyukti, IT, Message"
       />
->>>>>>> 5a6f6f3966853a955660da818c8f9e70af492108
+
       <motion.div
         initial={{ x: 100, opacity: 0 }}
         animate={{ x: 0, opacity: 1 }}
         transition={{ duration: 0.9, ease: "easeOut", delay: 0.2 }}
         className="w-full h-full flex items-center justify-center px-5 lg:px-16 bg-base-100 relative"
       >
-<<<<<<< HEAD
-
         <div className="relative z-10 w-full max-w-xl">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -79,25 +72,6 @@ const Contact = () => {
               <span className="text-primary inline-flex overflow-hidden">Touch</span>
             </motion.h1>
 
-=======
-        <div className="relative z-10 w-full max-w-xl">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.9, ease: "easeOut", delay: 0.4 }}
-            className="card bg-base-200 shadow-xl p-8 space-y-6"
-          >
-            <motion.h1
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, ease: "easeOut", delay: 0.5 }}
-              className="text-4xl md:text-5xl font-bold text-base-content"
-            >
-              Get in{" "}
-              <span className="text-primary inline-flex overflow-hidden">Touch</span>
-            </motion.h1>
-
->>>>>>> 5a6f6f3966853a955660da818c8f9e70af492108
             <motion.p
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
@@ -114,7 +88,14 @@ const Contact = () => {
                   key={field}
                   type={field.includes("email") ? "email" : "text"}
                   name={field}
-                  placeholder={field === "user_name" ? "Your Name" : field === "user_email" ? "Your Email" : "Your Phone"}
+                  aria-label={field}
+                  placeholder={
+                    field === "user_name"
+                      ? "Your Name"
+                      : field === "user_email"
+                      ? "Your Email"
+                      : "Your Phone"
+                  }
                   className="input input-bordered w-full transition duration-300 focus:ring-2 focus:ring-primary"
                   value={form[field]}
                   onChange={handleChange}
@@ -127,6 +108,7 @@ const Contact = () => {
               <motion.textarea
                 rows="4"
                 name="message"
+                aria-label="Your Message"
                 placeholder="Your Message"
                 className="textarea textarea-bordered w-full transition duration-300 focus:ring-2 focus:ring-primary"
                 value={form.message}
@@ -134,7 +116,7 @@ const Contact = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.7, ease: "easeOut", delay: 1 }}
-              />
+              ></motion.textarea>
 
               <motion.button
                 type="submit"
@@ -152,7 +134,6 @@ const Contact = () => {
         </div>
         <Footer />
       </motion.div>
-
     </section>
   );
 };
