@@ -36,83 +36,97 @@ const badgeColors = [
   "error",
 ];
 
+// Animation config
+const getCardVariants = (index) => {
+  const isLeft = index % 2 === 0;
+  return {
+    initial: { opacity: 0, x: isLeft ? "-100vw" : "100vw", scale: 0.95 },
+    animate: {
+      opacity: 1,
+      x: 0,
+      scale: 1,
+      transition: {
+        duration: 0.6,
+        ease: "easeOut",
+        delay: index * 0.1,
+      },
+    },
+  };
+};
+
+const containerVariants = {
+  animate: {
+    transition: {
+      staggerChildren: 0.1,
+    },
+  },
+};
+
 const Projects = () => {
   return (
     <section
       id="projects"
-      className="w-full h-screen flex flex-col justify-start px-6 md:px-16 py-20 bg-base-100 overflow-y-auto"
+      className="h-screen w-full bg-base-100 px-4 md:px-12 py-24 overflow-y-auto"
     >
-      <SEO
-        title="Projects"
-        description=""
-        keywords=""
-      />
+      <SEO title="Projects" description="Explore our past work" keywords="MERN, Portfolio, Projects" />
+
+      {/* Heading */}
       <motion.h1
         initial={{ y: 50, opacity: 0 }}
         whileInView={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.6, ease: "easeOut" }}
         viewport={{ once: true }}
-        className="text-4xl w-full py-3 top-12 absolute z-40 left-0 backdrop-blur-3xl justify-center md:text-5xl lg:text-6xl font-bold text-center text-base-content"
+        className="text-4xl md:text-5xl lg:text-6xl font-bold text-center text-base-content mb-12"
       >
-        Our{" "}
-        <span className="text-primary inline-flex overflow-hidden">
-          Team Work
-        </span>
+        Our <span className="text-primary">Team Work</span>
       </motion.h1>
 
-      <div className="max-w-screen-xl mx-auto grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-10 mt-24">
+      {/* Project Grid */}
+      <motion.div
+        variants={containerVariants}
+        initial="initial"
+        whileInView="animate"
+        viewport={{ once: true }}
+        className="max-w-7xl overflow-hidden mx-auto grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-10"
+      >
         {projects.map((project, index) => (
           <motion.div
             key={index}
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{
-              duration: 0.6,
-              ease: "easeOut",
-              delay: index * 0.15,
-            }}
-            viewport={{ once: true }}
-            className="relative group rounded-xl border border-base-content/10 bg-base-200/70 backdrop-blur-sm shadow-xl hover:-translate-y-1.5 transition-all duration-500 overflow-hidden"
+            variants={getCardVariants(index)}
+            className="group relative rounded-xl border border-base-content/10 bg-base-200/70 backdrop-blur-lg shadow-xl hover:-translate-y-1.5 transition-all duration-500 overflow-hidden"
+            whileHover={{ y: -6 }}
           >
             {/* Image */}
             <div className="relative overflow-hidden">
               <img
                 src={project.image}
                 alt={project.name}
-                className="w-full h-60 object-cover transition-all duration-700 group-hover:scale-110"
+                className="w-full h-60 object-cover transition-transform duration-700 group-hover:scale-110"
               />
-
-              {/* Gradient overlay */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500 z-10"></div>
-
-              {/* Project Title */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10" />
               <h2 className="absolute bottom-4 left-4 text-white text-lg font-bold z-20">
                 {project.name}
               </h2>
 
-              {/* Tech Badges */}
+              {/* Top-left tech badges */}
               <div className="absolute top-4 left-4 flex flex-wrap gap-1 z-20">
-                {project.tech
-                  .split(",")
-                  .slice(0, 3)
-                  .map((stack, i) => (
-                    <span
-                      key={i}
-                      className={`badge badge-${badgeColors[i % badgeColors.length]} badge-sm`}
-                    >
-                      {stack.trim()}
-                    </span>
-                  ))}
+                {project.tech.split(",").slice(0, 3).map((stack, i) => (
+                  <span
+                    key={i}
+                    className={`badge badge-${badgeColors[i % badgeColors.length]} badge-sm`}
+                  >
+                    {stack.trim()}
+                  </span>
+                ))}
               </div>
             </div>
 
-            {/* Card Body */}
+            {/* Body */}
             <div className="p-5 space-y-4">
-              <p className="text-base-content/80 text-[0.95rem] leading-relaxed font-medium">
+              <p className="text-base-content/80 text-sm leading-relaxed font-medium">
                 {project.description}
               </p>
 
-              {/* Full Tech Badges */}
               <div className="flex flex-wrap gap-2">
                 {project.tech.split(",").map((stack, i) => (
                   <div
@@ -146,10 +160,9 @@ const Projects = () => {
             </div>
           </motion.div>
         ))}
-      </div>
+      </motion.div>
     </section>
   );
 };
 
 export default Projects;
-

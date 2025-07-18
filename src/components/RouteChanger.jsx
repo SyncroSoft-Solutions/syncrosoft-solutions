@@ -111,7 +111,7 @@ const RouteChanger = ({ className = "" }) => {
       ref={boxRef}
       onMouseDown={handleMouseDown}
       onTouchStart={handleTouchStart}
-      className={`fixed z-50 pointer-events-auto cursor-move ${className}`}
+      className={`fixed z-40 pointer-events-auto cursor-move ${className}`}
       style={{
         left: `${position.x}px`,
         top: `${position.y}px`,
