@@ -63,11 +63,11 @@ const LoaderIcon = ({ className = "w-8 h-8" }) => {
           gradientUnits="userSpaceOnUse">
           <stop
             offset="0.1"
-            stop-color="#6AAF41"
+            stopColor="#6AAF41"
             id="stop7" />
           <stop
             offset="1"
-            stop-color="#1068B7"
+            stopColor="#1068B7"
             id="stop8" />
         </linearGradient>
         <linearGradient
@@ -79,11 +79,11 @@ const LoaderIcon = ({ className = "w-8 h-8" }) => {
           gradientUnits="userSpaceOnUse">
           <stop
             offset="0.1"
-            stop-color="#1565B1"
+            stopColor="#1565B1"
             id="stop9" />
           <stop
             offset="1"
-            stop-color="#264294"
+            stopColor="#264294"
             id="stop10" />
         </linearGradient>
         <linearGradient
@@ -94,11 +94,11 @@ const LoaderIcon = ({ className = "w-8 h-8" }) => {
           y2="206.5"
           gradientUnits="userSpaceOnUse">
           <stop
-            stop-color="#6AAF41"
+            stopColor="#6AAF41"
             id="stop11" />
           <stop
             offset="1"
-            stop-color="#1A71B0"
+            stopColor="#1A71B0"
             id="stop12" />
         </linearGradient>
         <linearGradient
@@ -109,11 +109,11 @@ const LoaderIcon = ({ className = "w-8 h-8" }) => {
           y2="142.5"
           gradientUnits="userSpaceOnUse">
           <stop
-            stop-color="#6AAF41"
+            stopColor="#6AAF41"
             id="stop13" />
           <stop
             offset="1"
-            stop-color="#1A71B0"
+            stopColor="#1A71B0"
             id="stop14" />
         </linearGradient>
       </defs>
