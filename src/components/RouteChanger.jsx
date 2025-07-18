@@ -2,7 +2,6 @@ import React, { useRef, useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
-// Define the route order
 const routeOrder = [
   { path: "/", label: "Home" },
   { path: "/about", label: "About" },
@@ -23,15 +22,22 @@ const RouteChanger = ({ className = "" }) => {
   );
   if (currentIndex === -1) return null;
 
-  const prevLabel =
-    routeOrder[(currentIndex - 1 + routeOrder.length) % routeOrder.length].label;
-  const nextLabel =
-    routeOrder[(currentIndex + 1) % routeOrder.length].label;
-
-  const [position, setPosition] = useState({ x: window.innerWidth / 2 - 80, y: window.innerHeight - 100 });
+  const [position, setPosition] = useState({ x: 0, y: 0 });
   const [isDragging, setIsDragging] = useState(false);
   const offset = useRef({ x: 0, y: 0 });
 
+  // ✅ Set bottom center initially
+  useEffect(() => {
+    const boxWidth = boxRef.current?.offsetWidth || 150;
+    const boxHeight = boxRef.current?.offsetHeight || 60;
+
+    setPosition({
+      x: window.innerWidth / 2 - boxWidth / 2,
+      y: window.innerHeight - boxHeight - 20,
+    });
+  }, []);
+
+  // --- MOUSE DRAG ---
   const handleMouseDown = (e) => {
     setIsDragging(true);
     offset.current = {
@@ -40,7 +46,6 @@ const RouteChanger = ({ className = "" }) => {
     };
     document.body.style.userSelect = "none";
   };
-
   const handleMouseMove = (e) => {
     if (isDragging) {
       setPosition({
@@ -49,18 +54,44 @@ const RouteChanger = ({ className = "" }) => {
       });
     }
   };
-
   const handleMouseUp = () => {
     setIsDragging(false);
     document.body.style.userSelect = "auto";
   };
 
+  // --- TOUCH DRAG ---
+  const handleTouchStart = (e) => {
+    const touch = e.touches[0];
+    offset.current = {
+      x: touch.clientX - position.x,
+      y: touch.clientY - position.y,
+    };
+    setIsDragging(true);
+  };
+  const handleTouchMove = (e) => {
+    if (!isDragging) return;
+    const touch = e.touches[0];
+    setPosition({
+      x: touch.clientX - offset.current.x,
+      y: touch.clientY - offset.current.y,
+    });
+  };
+  const handleTouchEnd = () => {
+    setIsDragging(false);
+  };
+
+  // ✅ Add global listeners for mouse & touch drag
   useEffect(() => {
     window.addEventListener("mousemove", handleMouseMove);
     window.addEventListener("mouseup", handleMouseUp);
+    window.addEventListener("touchmove", handleTouchMove);
+    window.addEventListener("touchend", handleTouchEnd);
+
     return () => {
       window.removeEventListener("mousemove", handleMouseMove);
       window.removeEventListener("mouseup", handleMouseUp);
+      window.removeEventListener("touchmove", handleTouchMove);
+      window.removeEventListener("touchend", handleTouchEnd);
     };
   }, [isDragging]);
 
@@ -70,14 +101,20 @@ const RouteChanger = ({ className = "" }) => {
     navigate(routeOrder[nextIndex].path);
   };
 
+  const prevLabel =
+    routeOrder[(currentIndex - 1 + routeOrder.length) % routeOrder.length].label;
+  const nextLabel =
+    routeOrder[(currentIndex + 1) % routeOrder.length].label;
+
   return (
     <div
       ref={boxRef}
       onMouseDown={handleMouseDown}
+      onTouchStart={handleTouchStart}
       className={`fixed z-50 pointer-events-auto cursor-move ${className}`}
       style={{
-        left: position.x,
-        top: position.y,
+        left: `${position.x}px`,
+        top: `${position.y}px`,
       }}
     >
       <div className="backdrop-blur-3xl bg-base-200/60 shadow-xl rounded-full p-2 flex gap-3">
@@ -89,7 +126,6 @@ const RouteChanger = ({ className = "" }) => {
         >
           <ChevronLeft />
         </button>
-
         <button
           onClick={() => handleNavigate(1)}
           className="btn btn-circle btn-sm btn-outline hover:scale-110 transition-all"
