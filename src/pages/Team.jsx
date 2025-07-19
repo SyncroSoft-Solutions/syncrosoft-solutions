@@ -73,28 +73,33 @@ const teamMembers = [
   },
 ];
 
-const getColumns = (width) => {
-  if (width >= 1024) return 3;
-  if (width >= 768) return 2;
-  return 1;
+
+const groupTeamMembers = (members, groupSize) => {
+  const groups = [];
+  for (let i = 0; i < members.length; i += groupSize) {
+    groups.push(members.slice(i, i + groupSize));
+  }
+  return groups;
 };
 
-const chunkArray = (arr, size) =>
-  arr.reduce((acc, _, i) => {
-    if (i % size === 0) acc.push(arr.slice(i, i + size));
-    return acc;
-  }, []);
-
 const Team = () => {
-  const [columns, setColumns] = useState(getColumns(window.innerWidth));
+  const [groupedMembers, setGroupedMembers] = useState([]);
 
   useEffect(() => {
-    const handleResize = () => setColumns(getColumns(window.innerWidth));
+    const handleResize = () => {
+      const width = window.innerWidth;
+      if (width < 640) {
+        setGroupedMembers(groupTeamMembers(teamMembers, 1));
+      } else if (width < 1024) {
+        setGroupedMembers(groupTeamMembers(teamMembers, 2));
+      } else {
+        setGroupedMembers(groupTeamMembers(teamMembers, 3));
+      }
+    };
+    handleResize();
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
-
-  const groupedMembers = chunkArray(teamMembers, columns);
 
   return (
     <section
@@ -108,26 +113,22 @@ const Team = () => {
       />
 
       {/* Heading */}
-        <motion.h1
-          initial={{ y: 60, opacity: 0 }}
-          whileInView={{ y: 0, opacity: 1 }}
-          transition={{ duration: 0.7, ease: "easeOut" }}
-          viewport={{ once: true }}
-          className="text-4xl md:text-5xl lg:text-6xl font-bold text-center text-base-content mb-16"
-        >
-          Meet Our{" "}
-          <span className="text-primary inline-flex overflow-hidden">Team</span>
-        </motion.h1>
+      <motion.h1
+        initial={{ y: 60, opacity: 0 }}
+        whileInView={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.7, ease: "easeOut" }}
+        viewport={{ once: true }}
+        className="text-4xl md:text-5xl lg:text-6xl font-bold text-center text-base-content mb-16"
+      >
+        Meet Our{" "}
+        <span className="text-primary inline-flex overflow-hidden">Team</span>
+      </motion.h1>
 
       <div className="carousel w-full">
         {groupedMembers.map((group, index) => {
           const slideId = `slide${index + 1}`;
-          const prevId = `#slide${
-            (index - 1 + groupedMembers.length) % groupedMembers.length + 1
-          }`;
-          const nextId = `#slide${
-            (index + 1) % groupedMembers.length + 1
-          }`;
+          const prevId = `#slide${(index - 1 + groupedMembers.length) % groupedMembers.length + 1}`;
+          const nextId = `#slide${(index + 1) % groupedMembers.length + 1}`;
 
           return (
             <div
@@ -135,7 +136,13 @@ const Team = () => {
               id={slideId}
               className="carousel-item relative w-full flex justify-center"
             >
-              <div className="w-full flex gap-6 justify-center flex-wrap px-2">
+              <motion.div
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                transition={{ duration: 0.8, ease: "easeInOut" }}
+                viewport={{ once: true }}
+                className="w-full flex gap-6 justify-center flex-wrap px-2"
+              >
                 {group.map((member) => (
                   <div
                     key={member.id}
@@ -144,9 +151,9 @@ const Team = () => {
                     <TeamCard member={member} />
                   </div>
                 ))}
-              </div>
+              </motion.div>
 
-              {/* Arrow buttons (unchanged layout) */}
+              {/* Arrow buttons */}
               <div className="absolute z-40 left-5 right-5 top-1/2 flex justify-between transform -translate-y-1/2">
                 <a href={prevId} className="btn btn-circle">
                   ❮
