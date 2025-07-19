@@ -7,6 +7,7 @@ import AJAY from "../assets/team/ajay.jpeg";
 import SADHANA from "../assets/team/sadhana.jpeg";
 import SOHAN from "../assets/team/sohan.jpeg";
 import ABHISHEK from "../assets/team/abhishek.jpeg";
+import ROHIT from "../assets/team/rohit.jpeg";
 import SEO from "../components/SEO";
 
 const teamMembers = [
@@ -34,7 +35,7 @@ const teamMembers = [
   {
     id: 3,
     name: "Rutika Ekshinge",
-    role: "Web Developer",
+    role: "Content Writer",
     photo: RUTIKA,
     email: "mailto:rutika.syncrosoft@gmail.com",
     phone: "tel:+9145488758",
@@ -44,7 +45,7 @@ const teamMembers = [
   {
     id: 4,
     name: "Sadhana Jadhav",
-    role: "Web Developer",
+    role: "Content Writer",
     photo: SADHANA,
     email: "mailto:sadhana.syncrosoft@gmail.com",
     phone: "tel:+919561082845",
@@ -64,11 +65,21 @@ const teamMembers = [
   {
     id: 6,
     name: "Abhishek Jaiswar",
-    role: "Full Stack Developer",
+    role: "Nothing yet work",
     photo: ABHISHEK,
     email: "mailto:abhishek.syncrosoft@gmail.com",
     phone: "tel:+918530896645",
     github: "https://github.com/SycroAbhi",
+    portfolio: "https://demo.com",
+  },
+  {
+    id: 7,
+    name: "Rohit Gaware",
+    role: "Digital Marketing",
+    photo: ROHIT,
+    email: "mailto:rohit.syncrosoft@gmail.com",
+    phone: "tel:+919657264056",
+    github: "https://github.com/demo",
     portfolio: "https://demo.com",
   },
 ];
