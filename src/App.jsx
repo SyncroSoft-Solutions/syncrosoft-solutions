@@ -9,30 +9,33 @@ import { Toaster } from 'react-hot-toast';
 import AppContent from './AppContent';
 
 function App() {
-  const { theme } = useThemeStore();
+  const { theme, initializeTheme } = useThemeStore();
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    document.documentElement.setAttribute("data-theme", theme);
+    initializeTheme();
     const timer = setTimeout(() => setLoading(false), 2500);
     return () => clearTimeout(timer);
-  }, [theme]);
-
-  if (loading) return <Loader />;
+  }, []);
 
   return (
-    <div className="relative w-screen overflow-x-hidden bg-base-100" data-theme={theme}>
-      <Toaster position="top-center" reverseOrder={false} />
-      <BrowserRouter>
+    <BrowserRouter>
+      <div className="relative w-screen overflow-x-hidden bg-base-100" data-theme={theme}>
+        <Toaster position="top-center" reverseOrder={false} />
+
+        {/* Theme Switch */}
         <div className="fixed top-20 right-3 z-50">
-          <ThemeSelector />
+          {loading ? <Loader /> : <ThemeSelector />}
         </div>
+
+        {/* Main Content or Loader */}
         <div className="relative z-40">
-          <AppContent />
+          {loading ? <Loader /> : <AppContent />}
         </div>
-      </BrowserRouter>
-    </div>
+      </div>
+    </BrowserRouter>
   );
 }
+
 
 export default App;

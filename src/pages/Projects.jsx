@@ -76,7 +76,7 @@ const Projects = () => {
           viewport={{ once: true }}
           className="text-4xl md:text-5xl lg:text-6xl font-bold text-center text-base-content mb-16"
         >
-          Our <span className="text-primary">Team Work</span>
+          Syncing Strategy with <span className="text-primary">Scalable Solutions</span>
         </motion.h1>
 
         {/* Project Grid */}
