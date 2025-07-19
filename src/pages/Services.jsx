@@ -62,7 +62,7 @@ const Services = () => {
           whileInView={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.7, ease: "easeOut" }}
           viewport={{ once: true }}
-          className="text-4xl w-full py-3 top-12 fixed z-40 left-0 backdrop-blur-3xl justify-center md:text-5xl lg:text-6xl font-bold text-center text-base-content"
+          className="text-4xl md:text-5xl lg:text-6xl font-bold text-center text-base-content mb-16"
         >
           Our{" "}
           <span className="text-primary inline-flex overflow-hidden">Services</span>
@@ -74,13 +74,13 @@ const Services = () => {
           initial="initial"
           whileInView="animate"
           viewport={{ once: true }}
-          className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-6 md:gap-8 mt-24"
+          className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-6 md:gap-8"
         >
           {services.map((service, index) => (
             <motion.div
               key={index}
               variants={getCardVariants(index)}
-              className="card bg-base-200 shadow-lg p-5 mb-3 rounded-2xl group hover:shadow-xl hover:scale-[1.03] transition-all duration-300 relative"
+              className="card bg-base-200 border border-base-content/10 shadow-lg p-5 mb-3 rounded-2xl group hover:shadow-xl hover:scale-[1.03] transition-all duration-300 relative"
               whileHover={{ y: -4 }}
             >
               {/* Glow on hover */}

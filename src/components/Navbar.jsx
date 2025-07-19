@@ -41,9 +41,9 @@ const Navbar = () => {
       variants={navbarVariants}
       initial="hidden"
       animate="visible"
-      className="fixed top-0 z-50 w-full bg-base-100 shadow-md"
+      className="fixed top-0 z-50 w-full bg-base-100 shadow-md border-b-2 border-base-content/5"
     >
-      <div className="flex items-center justify-between px-4 scroll-py-3">
+      <div className="flex items-center justify-between px-4 py-2">
         <div className="max-w-[160px] md:max-w-none">
           <Logo />
         </div>

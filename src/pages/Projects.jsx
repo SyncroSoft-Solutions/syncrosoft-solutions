@@ -74,9 +74,9 @@ const Projects = () => {
           whileInView={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.6, ease: "easeOut" }}
           viewport={{ once: true }}
-          className="text-4xl w-full py-3 top-12 fixed z-40 left-0 backdrop-blur-3xl justify-center md:text-5xl lg:text-6xl font-bold text-center text-base-content"
+          className="text-4xl md:text-5xl lg:text-6xl font-bold text-center text-base-content mb-16"
         >
-          Our <span className="text-primary inline-flex overflow-hidden">Team Work</span>
+          Our <span className="text-primary">Team Work</span>
         </motion.h1>
 
         {/* Project Grid */}
@@ -85,7 +85,7 @@ const Projects = () => {
           initial="initial"
           whileInView="animate"
           viewport={{ once: true }}
-          className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-10 mt-24"
+          className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-10"
         >
           {projects.map((project, index) => (
             <motion.div

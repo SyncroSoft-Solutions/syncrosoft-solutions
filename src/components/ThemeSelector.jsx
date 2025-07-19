@@ -8,12 +8,12 @@ function ThemeSelector() {
 
   return (
     <div className="dropdown dropdown-end drop-shadow-lg">
-      <button tabIndex={0} className="btn btn-md btn-outline btn-neutra btn-circle">
+      <button tabIndex={0} className="btn btn-md btn-outline btn-neutral btn-circle">
         <PaletteIcon />
       </button>
       <div
         tabIndex={0}
-        className="dropdown-content mt-2 p-1 shadow-2xl bg-base-200 backdrop-blur-lg rounded-2xl
+        className="dropdown-content mt-2 p-1 shadow-2xl bg-base-200 backdrop-blur-3xl rounded-2xl
         w-44 border border-base-content/10 max-h-60 overflow-y-auto"
       >
         <div className="space-y-1 ">
