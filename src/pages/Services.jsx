@@ -52,7 +52,11 @@ const Services = () => {
 
   return (
     <section id="services" className="min-h-screen w-full bg-base-100">
-      <SEO title="Services" description="What we offer" keywords="Web Development, App, UI/UX, MERN" />
+      <SEO
+        title="Services"
+        description="Discover Syncrosoft’s wide range of professional services including web development, app design, and cloud solutions."
+        keywords="Web Development, App Development, UI/UX Design, Cloud Integration, MERN, Syncrosoft Services"
+      />
 
       <div className="w-full max-w-7xl mx-auto px-4 sm:px-8 lg:px-12 py-24">
 

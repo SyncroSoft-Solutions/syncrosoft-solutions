@@ -64,8 +64,12 @@ const containerVariants = {
 const Projects = () => {
   return (
     <section id="projects" className="min-h-screen w-full bg-base-100">
-      <SEO title="Projects" description="Explore our past work" keywords="MERN, Portfolio, Projects" />
-
+      <SEO
+        title="Projects"
+        description="Explore impactful projects built by Syncrosoft, showcasing our technical expertise and innovation."
+        keywords="Projects, MERN Stack, Portfolio, Web Applications, Syncrosoft Work, Vite, Tailwind"
+      />
+      
       <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 py-24">
 
         {/* Heading */}

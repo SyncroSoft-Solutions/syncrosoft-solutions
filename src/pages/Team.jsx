@@ -7,6 +7,7 @@ import AJAY from "../assets/team/ajay.jpeg";
 import SADHANA from "../assets/team/sadhana.jpeg";
 import SOHAN from "../assets/team/sohan.jpeg";
 import ABHISHEK from "../assets/team/abhishek.jpeg";
+import SEO from "../components/SEO";
 
 const teamMembers = [
   {
@@ -100,6 +101,12 @@ const Team = () => {
       id="team"
       className="w-full min-h-screen px-6 md:px-16 py-20 bg-base-100 text-base-content"
     >
+      <SEO
+        title="Team"
+        description="Meet our skilled and passionate development team at Syncrosoft."
+        keywords="Team, Developers, Syncrosoft, Web Developers, Full Stack, MERN, UI/UX"
+      />
+
       {/* Heading */}
         <motion.h1
           initial={{ y: 60, opacity: 0 }}
