@@ -12,7 +12,6 @@ const services = [
   { icon: Paintbrush, title: "UI/UX Design", description: "Beautiful, intuitive, and accessible interface designs for engaging user experiences." },
   { icon: CloudCog, title: "Cloud Integration", description: "Deploy, scale, and manage apps with modern cloud infrastructure solutions." },
   { icon: BarChart4, title: "Data Analytics", description: "Turn business data into actionable insights and optimize your strategies." },
-  { icon: Users2, title: "IT Consulting", description: "Expert advice and scalable solutions for your business operations and tech stack." },
   { icon: ShieldCheck, title: "Cybersecurity", description: "Protect your systems and data with our advanced security solutions and audits." },
   { icon: ServerCog, title: "API Development", description: "Custom RESTful and GraphQL APIs for seamless integration and scalable services." },
   { icon: Globe2, title: "E-Commerce Solutions", description: "Build secure, fast, and user-friendly online stores with seamless payment gateways." },
