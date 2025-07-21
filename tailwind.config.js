@@ -1,5 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 import daisyui from "daisyui"
+import tailwind_scrollbar_hide from "tailwind-scrollbar-hide"
 
 export default {
   content: [
@@ -21,7 +22,7 @@ export default {
     },
   },
 
-  plugins: [daisyui],
+  plugins: [daisyui,tailwind_scrollbar_hide],
 
   daisyui: {
     themes: [

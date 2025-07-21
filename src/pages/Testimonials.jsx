@@ -47,14 +47,14 @@ const Testimonials = () => {
   };
 
   return (
-    <section className="w-full min-h-screen px-4 md:px-16 py-20 bg-base-100 text-base-content">
+    <section className="h-screen bg-base-100 text-base-content overflow-y-auto overflow-x-hidden scrollbar-hide">
       <SEO
         title="Client Review"
         description="Client feedbacks and testimonials"
         keywords="Client Review, Testimonials, Feedback"
       />
-
-      <motion.h1
+      <div className="w-full max-w-7xl mx-auto px-4 sm:px-8 lg:px-12 py-24 overflow-hidden">
+        <motion.h1
         initial={{ y: 40, opacity: 0 }}
         whileInView={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.6 }}
@@ -137,6 +137,8 @@ const Testimonials = () => {
           );
         })}
       </div>
+      </div>
+      
 
     </section>
   );
