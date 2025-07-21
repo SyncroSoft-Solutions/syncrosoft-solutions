@@ -58,7 +58,7 @@ const Services = () => {
         keywords="Web Development, App Development, UI/UX Design, Cloud Integration, MERN, Syncrosoft Services"
       />
 
-      <div className="w-full max-w-7xl mx-auto sm:px-8 lg:px-12 py-24">
+      <div className="w-full max-w-7xl mx-auto px-4 sm:px-8 lg:px-12 py-24">
 
         {/* Heading */}
         <motion.h1
