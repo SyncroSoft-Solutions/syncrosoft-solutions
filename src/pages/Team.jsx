@@ -9,6 +9,7 @@ import SOHAN from "../assets/team/sohan.jpeg";
 import ABHISHEK from "../assets/team/abhishek.jpeg";
 import ROHIT from "../assets/team/rohit.jpeg";
 import SEO from "../components/SEO";
+import AnimatedBackground from "../components/AnimatedBackground";
 
 const teamMembers = [
   {
@@ -31,36 +32,34 @@ const teamMembers = [
     phone: "tel:+917559394187",
     github: "https://github.com/ajaysyncrosoft",
     portfolio: "https://portfolio-0-sigma.vercel.app",
+    badge: "DEV",
   },
   {
     id: 3,
     name: "Rutika Ekshinge",
-    role: "Content Writer",
+    role: "Project Manager",
     photo: RUTIKA,
     email: "mailto:rutika.syncrosoft@gmail.com",
     phone: "tel:+9145488758",
-    github: "https://github.com/temp",
-    portfolio: "https://demo.com",
+    badge: "Manager",
   },
   {
     id: 4,
     name: "Sadhana Jadhav",
-    role: "Content Writer",
+    role: "Data Analyst",
     photo: SADHANA,
     email: "mailto:sadhana.syncrosoft@gmail.com",
     phone: "tel:+919561082845",
-    github: "https://github.com/Sadhanasyncro",
-    portfolio: "https://demo.com",
+    badge: "Manager",
   },
   {
     id: 5,
     name: "Sohan Kendre",
-    role: "Web Developer",
+    role: "Frontend Developer",
     photo: SOHAN,
     email: "mailto:sohan.syncrosoft@gmail.com",
     phone: "tel:+919322653708",
-    github: "https://github.com/Sohansyncrosoft",
-    portfolio: "https://demo.com",
+    badge: "Manager",
   },
   {
     id: 6,
@@ -69,8 +68,7 @@ const teamMembers = [
     photo: ABHISHEK,
     email: "mailto:abhishek.syncrosoft@gmail.com",
     phone: "tel:+918530896645",
-    github: "https://github.com/SycroAbhi",
-    portfolio: "https://demo.com",
+    badge: "Manager",
   },
   {
     id: 7,
@@ -79,8 +77,7 @@ const teamMembers = [
     photo: ROHIT,
     email: "mailto:rohit.syncrosoft@gmail.com",
     phone: "tel:+919657264056",
-    github: "https://github.com/demo",
-    portfolio: "https://demo.com",
+    badge: "Manager",
   },
 ];
 
@@ -115,67 +112,70 @@ const Team = () => {
   return (
     <section
       id="team"
-      className="w-full min-h-screen px-6 md:px-16 py-20 bg-base-100 text-base-content"
+      className="bg-base-100 text-base-content h-screen overflow-y-auto overflow-x-hidden scroll-smooth scrollbar-hide"
     >
       <SEO
         title="Team"
         description="Meet our skilled and passionate development team at Syncrosoft."
         keywords="Team, Developers, Syncrosoft, Web Developers, Full Stack, MERN, UI/UX"
       />
+      <AnimatedBackground />
+      <div className="w-full max-w-7xl mx-auto px-4 sm:px-8 lg:px-12 py-24 overflow-hidden">
 
-      {/* Heading */}
-      <motion.h1
-        initial={{ y: 60, opacity: 0 }}
-        whileInView={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.7, ease: "easeOut" }}
-        viewport={{ once: true }}
-        className="text-4xl md:text-5xl lg:text-6xl font-bold text-center text-base-content mb-16"
-      >
-        Meet Our{" "}
-        <span className="text-primary inline-flex overflow-hidden">Team</span>
-      </motion.h1>
+        {/* Heading */}
+        <motion.h1
+          initial={{ y: 60, opacity: 0 }}
+          whileInView={{ y: 0, opacity: 1 }}
+          transition={{ duration: 0.7, ease: "easeOut" }}
+          viewport={{ once: true }}
+          className="text-4xl md:text-5xl lg:text-6xl font-bold text-center text-base-content mb-16"
+        >
+          Meet Our{" "}
+          <span className="text-primary inline-flex overflow-hidden">Team</span>
+        </motion.h1>
 
-      <div className="carousel w-full">
-        {groupedMembers.map((group, index) => {
-          const slideId = `slide${index + 1}`;
-          const prevId = `#slide${(index - 1 + groupedMembers.length) % groupedMembers.length + 1}`;
-          const nextId = `#slide${(index + 1) % groupedMembers.length + 1}`;
+        <div className="carousel w-full">
+          {groupedMembers.map((group, index) => {
+            const slideId = `slide${index + 1}`;
+            const prevId = `#slide${(index - 1 + groupedMembers.length) % groupedMembers.length + 1}`;
+            const nextId = `#slide${(index + 1) % groupedMembers.length + 1}`;
 
-          return (
-            <div
-              key={index}
-              id={slideId}
-              className="carousel-item relative w-full flex justify-center"
-            >
-              <motion.div
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                transition={{ duration: 0.8, ease: "easeInOut" }}
-                viewport={{ once: true }}
-                className="w-full flex gap-6 justify-center flex-wrap px-2"
+            return (
+              <div
+                key={index}
+                id={slideId}
+                className="carousel-item relative w-full flex justify-center"
               >
-                {group.map((member) => (
-                  <div
-                    key={member.id}
-                    className="w-full sm:w-[80%] md:w-[45%] lg:w-[30%] max-w-sm"
-                  >
-                    <TeamCard member={member} />
-                  </div>
-                ))}
-              </motion.div>
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                  transition={{ duration: 0.8, ease: "easeInOut" }}
+                  viewport={{ once: true }}
+                  className="w-full flex gap-6 justify-center flex-wrap px-2"
+                >
+                  {group.map((member) => (
+                    <div
+                      key={member.id}
+                      className="w-full sm:w-[80%] md:w-[45%] lg:w-[30%] max-w-sm"
+                    >
+                      <TeamCard member={member} />
+                    </div>
+                  ))}
+                </motion.div>
 
-              {/* Arrow buttons */}
-              <div className="absolute z-40 left-5 right-5 top-1/2 flex justify-between transform -translate-y-1/2">
-                <a href={prevId} className="btn btn-circle">
-                  ❮
-                </a>
-                <a href={nextId} className="btn btn-circle">
-                  ❯
-                </a>
+                {/* Arrow buttons */}
+                <div className="absolute z-40 left-5 right-5 top-1/2 flex justify-between transform -translate-y-1/2">
+                  <a href={prevId} className="btn btn-circle">
+                    ❮
+                  </a>
+                  <a href={nextId} className="btn btn-circle">
+                    ❯
+                  </a>
+                </div>
               </div>
-            </div>
-          );
-        })}
+            );
+          })}
+        </div>
       </div>
     </section>
   );

@@ -5,6 +5,7 @@ import {
   ServerCog, Globe2,
 } from "lucide-react";
 import SEO from "../components/SEO";
+import AnimatedBackground from "../components/AnimatedBackground";
 
 const services = [
   { icon: Code2, title: "Web Development", description: "Custom, fast-loading, mobile-friendly MERN stack websites built with modern technologies." },
@@ -51,15 +52,15 @@ const Services = () => {
   const yParallax = useTransform(scrollYProgress, [0, 1], [0, -50]);
 
   return (
-    <section id="services" className="min-h-screen overflow-hidden w-full bg-base-100">
+    <section id="services" className="bg-base-100 text-base-content h-screen overflow-y-auto overflow-x-hidden scroll-smooth scrollbar-hide">
       <SEO
         title="Services"
         description="Discover Syncrosoft’s wide range of professional services including web development, app design, and cloud solutions."
         keywords="Web Development, App Development, UI/UX Design, Cloud Integration, MERN, Syncrosoft Services"
       />
 
+        <AnimatedBackground />
       <div className="w-full max-w-7xl mx-auto px-4 sm:px-8 lg:px-12 py-24">
-
         {/* Heading */}
         <motion.h1
           initial={{ y: 60, opacity: 0 }}

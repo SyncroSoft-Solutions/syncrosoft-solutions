@@ -4,6 +4,7 @@ import { Github, ExternalLink } from "lucide-react";
 import project1 from "../assets/projects/FUNCHAT.png";
 import project2 from "../assets/projects/CWF.png";
 import SEO from "../components/SEO";
+import AnimatedBackground from "../components/AnimatedBackground";
 
 const projects = [
   {
@@ -63,13 +64,14 @@ const containerVariants = {
 
 const Projects = () => {
   return (
-    <section id="projects" className="min-h-screen w-full bg-base-100">
+    <section id="projects" className="bg-base-100 text-base-content h-screen overflow-y-auto overflow-x-hidden scroll-smooth scrollbar-hide">
       <SEO
         title="Projects"
         description="Explore impactful projects built by Syncrosoft, showcasing our technical expertise and innovation."
         keywords="Projects, MERN Stack, Portfolio, Web Applications, Syncrosoft Work, Vite, Tailwind"
       />
-      
+
+      <AnimatedBackground />
       <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 py-24">
 
         {/* Heading */}

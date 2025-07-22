@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import { motion } from "framer-motion";
 import toast from "react-hot-toast";
 import emailjs from "emailjs-com";
-import Footer from '../components/Footer.jsx';
 import SEO from '../components/SEO';
+import AnimatedBackground from "../components/AnimatedBackground.jsx";
 
 const Contact = () => {
   const [form, setForm] = useState({
@@ -42,7 +42,7 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" className="w-full h-screen flex flex-col lg:flex-row overflow-hidden">
+    <section id="contact" className="bg-base-100 text-base-content h-screen overflow-y-auto overflow-x-hidden scroll-smooth scrollbar-hide">
       <SEO
         title="Conctact"
         description=""
@@ -52,8 +52,9 @@ const Contact = () => {
         initial={{ x: 100, opacity: 0 }}
         animate={{ x: 0, opacity: 1 }}
         transition={{ duration: 0.9, ease: "easeOut", delay: 0.2 }}
-        className="w-full h-full flex items-center justify-center px-5 lg:px-16 bg-base-100 relative"
+        className="w-full z-10 h-full flex items-center justify-center px-5 lg:px-16 bg-base-100 relative"
       >
+        <AnimatedBackground />
         <div className="relative z-10 w-full max-w-xl">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -123,7 +124,6 @@ const Contact = () => {
             </form>
           </motion.div>
         </div>
-        <Footer />
       </motion.div>
 
     </section>
