@@ -126,51 +126,85 @@ const About = () => {
       <AnimatedBackground />
       <div className="w-full max-w-7xl mx-auto px-4 sm:px-8 lg:px-12 py-24 overflow-hidden">
         <AnimatedSection>
-          <div className="py-16 lg:py-24">
+          <div className="min-h-screen  py-16 lg:py-24 px-4 sm:px-8 max-w-7xl mx-auto flex flex-col justify-start items-center">
+
+            {/* Heading on Top */}
             <motion.div
-              initial={{ opacity: 0, y: 50 }}
+              initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
               viewport={{ once: true }}
-              className="text-4xl md:text-5xl lg:text-6xl font-bold text-center text-base-content mb-16"
+              className="text-center mb-12"
             >
-              About{" "}
-              <Typingtext
-                as="h1"
-                initialDelay={500}
-                typingSpeed={120}
-                deletingSpeed={90}
-                pauseDuration={1500}
-                loop={true}
-                showCursor={true}
-                cursorCharacter="|"
-                cursorClassName="text-secondary"
-                className="min-h-20 text-4xl md:text-6xl font-bold mb-6"
-                sentences={[
-                  [
-                    { text: "SyncroSoft", className: "text-primary font-bold font-mono" },
-                  ],
-                ]}
-              />
-              <p className="text-xl md:text-2xl text-base-content/80 max-w-3xl mx-auto leading-relaxed">
-                We’re glad you’re here.<br className="my-2" />
-                At <span className="text-secondary font-bold">SyncroSoft Solutions</span>, we’re passionate about building more than just software — we build <span className="text-primary font-bold">partnerships</span>, <span className="text-primary font-bold">possibilities</span>, and <span className="text-primary font-bold">digital experiences</span> that make a difference. Whether you're a <span className="text-accent font-semibold">startup</span> or an <span className="text-accent font-semibold">enterprise</span>, you're in the right place.
+              <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-base-content mb-4">
+                About{" "}
+                <Typingtext
+                  as="span"
+                  initialDelay={500}
+                  typingSpeed={120}
+                  deletingSpeed={90}
+                  pauseDuration={1500}
+                  loop={true}
+                  showCursor={true}
+                  cursorCharacter="|"
+                  cursorClassName="text-secondary"
+                  className="text-primary font-bold font-mono"
+                  sentences={[
+                    [{ text: "SyncroSoft", className: "text-primary font-bold font-mono" }],
+                  ]}
+                />
+              </h2>
+            </motion.div>
+
+            {/* Two-Column Description */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+              viewport={{ once: true }}
+              className="grid grid-cols-1 lg:grid-cols-2 gap-10 mb-16"
+            >
+              <p className="text-lg md:text-xl text-base-content/80 leading-relaxed">
+                We’re glad you’re here. At{" "}
+                <span className="text-secondary font-bold">SyncroSoft Solutions</span>, we build more than just
+                software — we build <span className="text-primary font-bold">partnerships</span>,{" "}
+                <span className="text-primary font-bold">possibilities</span>, and{" "}
+                <span className="text-primary font-bold">digital experiences</span> that make a difference.
+              </p>
+
+              <p className="text-lg md:text-xl text-base-content/80 leading-relaxed">
+                Whether you're a <span className="text-accent font-semibold">startup</span> or an{" "}
+                <span className="text-accent font-semibold">enterprise</span>, you're in the right place.
+                Our <span className="text-info font-semibold">custom web solutions</span> are built for growth,
+                performance, and user experience.
               </p>
             </motion.div>
+
+            {/* Mission Section */}
             <motion.div
-              initial={{ opacity: 0, y: 60 }}
+              initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7 }}
               viewport={{ once: true }}
-              className="text-center max-w-3xl mx-auto px-4 sm:px-6 mb-16 sm:mb-20"
+              className="text-center max-w-3xl mx-auto mb-16"
             >
-              <h2 className="text-3xl font-bold mb-4">Our Mission & Vision</h2>
-              <p className="text-lg md:text-2xl text-base-content/80 leading-relaxed">
-                To empower clients with <span className="text-secondary font-bold">cutting-edge</span> digital tools through <span className="text-secondary font-bold">agile development</span>, <span className="text-secondary font-bold">smart technology</span>, and a <span className="text-secondary font-bold">user-first approach</span>.
+              <h3 className="text-3xl font-bold mb-4">Our Mission & Vision</h3>
+              <p className="text-lg md:text-xl text-base-content/80 leading-relaxed">
+                To empower clients with{" "}
+                <span className="text-secondary font-bold">cutting-edge</span> digital tools through{" "}
+                <span className="text-secondary font-bold">agile development</span>,{" "}
+                <span className="text-secondary font-bold">smart technology</span>, and a{" "}
+                <span className="text-secondary font-bold">user-first approach</span>.
               </p>
             </motion.div>
-            <div className="flex flex-wrap justify-center gap-8 sm:gap-10 px-4 sm:px-6 mb-16 sm:mb-24">
-              {[{ label: "Clients", end: 120 }, { label: "Projects", end: 200 }, { label: "Team Members", end: 10 }].map((stat, i) => (
+
+            {/* Stats Grid */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 px-4 sm:px-6">
+              {[
+                { label: "Clients", end: 120 },
+                { label: "Projects", end: 200 },
+                { label: "Team Members", end: 10 },
+              ].map((stat, i) => (
                 <motion.div
                   key={stat.label}
                   initial={{ opacity: 0, y: 30 }}
@@ -179,9 +213,9 @@ const About = () => {
                   viewport={{ once: true }}
                   className="text-center"
                 >
-                  <h3 className="text-4xl font-bold text-primary">
+                  <h4 className="text-4xl font-bold text-primary">
                     <CountUp end={stat.end} duration={3} />+
-                  </h3>
+                  </h4>
                   <p className="text-lg font-semibold text-base-content/80 mt-1">{stat.label}</p>
                 </motion.div>
               ))}
