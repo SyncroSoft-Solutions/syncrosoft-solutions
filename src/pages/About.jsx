@@ -126,7 +126,8 @@ const About = () => {
       <AnimatedBackground />
       <div className="w-full max-w-7xl mx-auto px-4 sm:px-8 lg:px-12 py-24 overflow-hidden">
         <AnimatedSection>
-          <div className="mt-16 lg:mt-24 min-h-screen max-w-7xl mx-auto flex flex-col justify-start items-center">
+          <div className="min-h-screen  py-16 lg:py-24 px-4 sm:px-8 max-w-7xl mx-auto flex flex-col justify-start items-center">
+
             {/* Heading on Top */}
             <motion.div
               initial={{ opacity: 0, y: 30 }}
@@ -311,7 +312,6 @@ const About = () => {
           </div>
         </AnimatedSection>
 
-
         <AnimatedSection >
           <motion.div
             variants={containerVariants}
@@ -384,7 +384,6 @@ const About = () => {
             </Link>
           </motion.div>
         </AnimatedSection>
-
       </div>
     </section>
   );
