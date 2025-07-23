@@ -25,7 +25,7 @@ const Hero = () => {
               showCursor={true}
               cursorCharacter="|"
               cursorClassName="text-secondary"
-              className="text-4xl min-h-40 md:text-5xl lg:text-6xl font-light leading-snug text-center my-10"
+              className="mt-24 mb-0 lg:mb-10 text-3xl min-h-40 md:text-5xl lg:text-6xl font-light leading-snug text-center"
               sentences={[
                 [
                   { text: "Building", className: "text-primary font-serif" },

@@ -137,7 +137,7 @@ const About = () => {
               viewport={{ once: true }}
               className="text-center mb-12"
             >
-              <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-base-content mb-4">
+              <h2 className="text-3xl md:text-5xl lg:text-6xl font-bold text-base-content mb-4">
                 About{" "}
                 <Typingtext
                   as="span"

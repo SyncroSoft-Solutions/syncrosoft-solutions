@@ -67,7 +67,7 @@ const Services = () => {
           whileInView={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.7, ease: "easeOut" }}
           viewport={{ once: true }}
-          className="text-4xl md:text-5xl lg:text-6xl font-bold text-center text-base-content mb-16"
+          className="text-3xl md:text-5xl lg:text-6xl font-bold text-center text-base-content mb-16"
         >
           Our{" "}
           <span className="text-primary inline-flex overflow-hidden">Services</span>

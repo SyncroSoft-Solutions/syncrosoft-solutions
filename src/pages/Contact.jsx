@@ -66,7 +66,7 @@ const Contact = () => {
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, ease: "easeOut", delay: 0.5 }}
-              className="text-4xl md:text-5xl font-bold text-base-content"
+              className="text-3xl md:text-5xl font-bold text-base-content"
             >
               Get in{" "}
               <span className="text-primary inline-flex overflow-hidden">Touch</span>

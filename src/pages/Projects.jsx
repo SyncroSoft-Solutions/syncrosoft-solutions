@@ -80,7 +80,7 @@ const Projects = () => {
           whileInView={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.6, ease: "easeOut" }}
           viewport={{ once: true }}
-          className="text-4xl md:text-5xl lg:text-6xl font-bold text-center text-base-content mb-16"
+          className="text-3xl md:text-5xl lg:text-6xl font-bold text-center text-base-content mb-16"
         >
           Syncing Strategy with <span className="text-primary">Scalable Solutions</span>
         </motion.h1>
