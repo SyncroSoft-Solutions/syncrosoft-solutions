@@ -4,6 +4,16 @@ import CountUp from "react-countup";
 import { Link } from "react-router-dom";
 import SEO from "../components/SEO";
 import AnimatedSection from "../components/AnimatedSection";
+import AnimatedBackground from "../components/AnimatedBackground";
+
+import samarth from "../assets/team/samarth.jpeg";
+import rutika from "../assets/team/rutika.jpeg";
+import ajay from "../assets/team/ajay.jpeg";
+import sadhana from "../assets/team/sadhana.jpeg";
+import sohan from "../assets/team/sohan.jpeg";
+import abhishek from "../assets/team/abhishek.jpeg";
+import rohit from "../assets/team/rohit.jpeg";
+import Typingtext from "../components/Typingtext";
 
 import {
   ArrowUpRight,
@@ -17,16 +27,7 @@ import {
   Users,
   FolderGit2,
 } from "lucide-react";
-import AnimatedBackground from "../components/AnimatedBackground";
 
-import samarth from "../assets/team/samarth.jpeg";
-import rutika from "../assets/team/rutika.jpeg";
-import ajay from "../assets/team/ajay.jpeg";
-import sadhana from "../assets/team/sadhana.jpeg";
-import sohan from "../assets/team/sohan.jpeg";
-import abhishek from "../assets/team/abhishek.jpeg";
-import rohit from "../assets/team/rohit.jpeg";
-import Typingtext from "../components/Typingtext";
 
 const teamMembers = [
   { id: 1, name: "Samarth Kanthale", role: "Full Stack Developer", image: samarth },
@@ -373,6 +374,7 @@ const About = () => {
               </button>
             </Link>
           </motion.div>
+
           <motion.div
             whileHover={{ scale: 1.05 }}
             className="fixed bottom-5 right-5 z-50"
