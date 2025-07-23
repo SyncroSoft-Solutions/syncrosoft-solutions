@@ -2,29 +2,41 @@ import React from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import AnimatedSection from "./AnimatedSection";
+import Typingtext from "./Typingtext";
 
 const Hero = () => {
   return (
     <section className="min-h-screen flex items-center justify-center bg-base-100 text-base-content relative overflow-hidden">
       <div className="px-4 sm:px-8">
-        <AnimatedSection index={0} >
+        <AnimatedSection >
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
             className="max-w-4xl mx-auto text-center"
           >
-            <motion.h1
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2, duration: 0.8 }}
-              className="text-4xl md:text-5xl lg:text-6xl font-extralight leading-tight my-20"
-            >
-              <span className="text-primary font-serif">Building</span>{" "}
-              <span className="text-accent font-mono">Digital Solutions</span>{" "}
-              That <span className="text-secondary font-semibold font-sans">Empower</span>{" "}
-              Your <span className="text-warning font-bold">Growth</span>
-            </motion.h1>
+            <Typingtext
+              as="h1"
+              initialDelay={500}
+              typingSpeed={120}
+              deletingSpeed={90}
+              pauseDuration={1500}
+              loop={true}
+              showCursor={true}
+              cursorCharacter="|"
+              cursorClassName="text-secondary"
+              className="text-4xl min-h-40 md:text-5xl lg:text-6xl font-light leading-snug text-center my-10"
+              sentences={[
+                [
+                  { text: "Building", className: "text-primary font-serif" },
+                  { text: "Digital Solutions", className: "text-accent font-mono" },
+                  { text: "That", className: "" },
+                  { text: "Empower", className: "text-secondary font-semibold font-sans" },
+                  { text: "Your", className: "" },
+                  { text: "Growth", className: "text-warning font-bold" },
+                ],
+              ]}
+            />
 
             <motion.p
               initial={{ opacity: 0, y: 20 }}

@@ -6,3 +6,24 @@
 .animate-fade-in-out {
   animation: fadeInOut 5s ease-out forwards;
 }
+
+.text-type {
+  display: inline-block;
+  white-space: pre-wrap;
+}
+
+.text-type__cursor {
+  margin-left: 0.25rem;
+  display: inline-block;
+  opacity: 1;
+}
+
+.text-type__cursor--hidden {
+  display: none;
+}
+
+.text-cursor-fix {
+  font-family: monospace;
+  line-height: 1;
+  vertical-align: baseline;
+}

@@ -2,7 +2,6 @@ import React from 'react';
 import SEO from '../components/SEO';
 import Hero from '../components/Hero';
 import About from '../components/About';
-import Team from '../components/Team';
 import Footer from '../components/Footer';
 import AnimatedBackground from '../components/AnimatedBackground';
 
@@ -21,7 +20,6 @@ function Home() {
       </div>
       <Hero />
       <About />
-      <Team />
       <Footer />
     </main>
   );

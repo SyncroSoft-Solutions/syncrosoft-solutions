@@ -1,19 +1,27 @@
 import React, { useRef, useEffect } from "react";
 import { motion, useAnimation, useInView } from "framer-motion";
 
-const slideVariant = {
-  hidden: { opacity: 0, x: -100 },
+// Default fade + slide variant
+const defaultVariants = {
+  hidden: { opacity: 0, y: 40 },
   visible: {
     opacity: 1,
-    x: 0,
-    transition: { duration: 0.5, ease: "easeOut" },
+    y: 0,
+    transition: { duration: 0.6, ease: "easeOut" },
   },
 };
 
-const AnimatedSection = ({ children }) => {
+const AnimatedSection = ({
+  children,
+  className = "",
+  variants = defaultVariants,
+  as = "div", // optional: render as div/section/span etc.
+  amount = 0.3, // % in view
+}) => {
+  const Component = motion[as]; // render as 'motion.div', 'motion.section', etc.
   const ref = useRef(null);
   const controls = useAnimation();
-  const inView = useInView(ref, { amount: 0.3, once: true });
+  const inView = useInView(ref, { amount, once: true });
 
   useEffect(() => {
     if (inView) {
@@ -22,15 +30,15 @@ const AnimatedSection = ({ children }) => {
   }, [inView, controls]);
 
   return (
-    <motion.section
+    <Component
       ref={ref}
       initial="hidden"
       animate={controls}
-      variants={slideVariant}
-      className="mb-20"
+      variants={variants}
+      className={className}
     >
       {children}
-    </motion.section>
+    </Component>
   );
 };
 

@@ -19,6 +19,25 @@ import {
 } from "lucide-react";
 import AnimatedBackground from "../components/AnimatedBackground";
 
+import samarth from "../assets/team/samarth.jpeg";
+import rutika from "../assets/team/rutika.jpeg";
+import ajay from "../assets/team/ajay.jpeg";
+import sadhana from "../assets/team/sadhana.jpeg";
+import sohan from "../assets/team/sohan.jpeg";
+import abhishek from "../assets/team/abhishek.jpeg";
+import rohit from "../assets/team/rohit.jpeg";
+import Typingtext from "../components/Typingtext";
+
+const teamMembers = [
+  { id: 1, name: "Samarth Kanthale", role: "Full Stack Developer", image: samarth },
+  { id: 2, name: "Ajay Kandhare", role: "Full Stack Developer", image: ajay },
+  { id: 3, name: "Rutika Ekshinge", role: "Project Manager", image: rutika },
+  { id: 4, name: "Sadhana Jadhav", role: "Data Analyst", image: sadhana },
+  { id: 5, name: "Sohan Kendre", role: "Frontend Developer", image: sohan },
+  { id: 6, name: "Abhishek Jaiswar", role: "Full Stack Developer", image: abhishek },
+  { id: 7, name: "Rohit Gaware", role: "Digital Marketing", image: rohit },
+];
+
 const techStack = [
   {
     name: "React",
@@ -106,7 +125,7 @@ const About = () => {
       />
       <AnimatedBackground />
       <div className="w-full max-w-7xl mx-auto px-4 sm:px-8 lg:px-12 py-24 overflow-hidden">
-        <AnimatedSection index={0}>
+        <AnimatedSection>
           <div className="py-16 lg:py-24">
             <motion.div
               initial={{ opacity: 0, y: 50 }}
@@ -115,9 +134,24 @@ const About = () => {
               viewport={{ once: true }}
               className="text-4xl md:text-5xl lg:text-6xl font-bold text-center text-base-content mb-16"
             >
-              <h1 className="text-4xl md:text-6xl font-bold mb-6">
-                Welcome to <span className="text-primary">SyncroSoft Solutions</span>
-              </h1>
+              About{" "}
+              <Typingtext
+                as="h1"
+                initialDelay={500}
+                typingSpeed={120}
+                deletingSpeed={90}
+                pauseDuration={1500}
+                loop={true}
+                showCursor={true}
+                cursorCharacter="|"
+                cursorClassName="text-secondary"
+                className="min-h-20 text-4xl md:text-6xl font-bold mb-6"
+                sentences={[
+                  [
+                    { text: "SyncroSoft", className: "text-primary font-bold font-mono" },
+                  ],
+                ]}
+              />
               <p className="text-xl md:text-2xl text-base-content/80 max-w-3xl mx-auto leading-relaxed">
                 We’re glad you’re here.<br className="my-2" />
                 At <span className="text-secondary font-bold">SyncroSoft Solutions</span>, we’re passionate about building more than just software — we build <span className="text-primary font-bold">partnerships</span>, <span className="text-primary font-bold">possibilities</span>, and <span className="text-primary font-bold">digital experiences</span> that make a difference. Whether you're a <span className="text-accent font-semibold">startup</span> or an <span className="text-accent font-semibold">enterprise</span>, you're in the right place.
@@ -155,7 +189,97 @@ const About = () => {
           </div>
         </AnimatedSection>
 
-        <div>
+        <AnimatedSection>
+          <div className="py-16 lg:py-24">
+            <motion.div
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+              viewport={{ once: true }}
+              className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"
+            >
+              {/* Responsive Grid: 1 column on sm, 2 on md+ */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                {/* === TEXT BLOCK === */}
+                <AnimatedSection>
+                  <motion.div
+                    initial={{ opacity: 0, y: 50 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.8 }}
+                    viewport={{ once: true }}
+                  >
+                    <h2 className="text-4xl md:text-5xl font-bold text-base-content mb-4">
+                      Our <span className="text-primary underline underline-offset-4">Team</span>
+                    </h2>
+                    <p className="text-xl md:text-2xl text-base-content/80 mb-6">
+                      The <span className="text-accent font-semibold">People Behind</span> the Innovation
+                    </p>
+                    <div className="text-start">
+                      <p className="text-lg md:text-xl text-base-content/70 mb-4 leading-relaxed">
+                        At <span className="text-primary font-bold">SyncroSoft Solutions</span>, our strength lies in our{" "}
+                        <span className="text-success font-semibold">people</span>. We are a team of{" "}
+                        <span className="text-success font-semibold">passionate developers</span>,{" "}
+                        <span className="text-success font-semibold">creative designers</span>, and{" "}
+                        <span className="text-success font-semibold">strategic thinkers</span> dedicated to building{" "}
+                        <span className="text-success font-semibold">technology that works</span>.
+                      </p>
+                      <p className="text-lg md:text-xl text-base-content/70 mb-4 leading-relaxed">
+                        <span className="text-success font-semibold">Collaboration</span>,{" "}
+                        <span className="text-success font-semibold">innovation</span>, and{" "}
+                        <span className="text-success font-semibold">transparency</span> are at the heart of everything we do. Our team works closely with clients to bring their ideas to life with{" "}
+                        <span className="text-success font-semibold">smart</span>,{" "}
+                        <span className="text-success font-semibold">scalable</span> solutions.
+                      </p>
+                      <div className="text-primary text-xl md:text-2xl font-bold flex items-center gap-2 mt-4">
+                        Together, we turn vision into <span className="text-warning">value</span>
+                      </div>
+                      <Link to="/team">
+                        <button className="mt-8 btn btn-primary rounded-full px-8 text-base font-semibold">
+                          Meet Our Team
+                        </button>
+                      </Link>
+                    </div>
+                  </motion.div>
+                </AnimatedSection>
+
+                {/* === TEAM GRID === */}
+                <AnimatedSection>
+                  <motion.div
+                    initial={{ opacity: 0, y: 50 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.8 }}
+                    viewport={{ once: true }}
+                    className="grid grid-cols-2 sm:grid-cols-3 gap-4 md:gap-6 mx-auto justify-center"
+                  >
+                    {teamMembers.map((member) => (
+                      <div
+                        key={member.id}
+                        className="flex flex-col gap-2 items-center text-center group transition-transform duration-300"
+                      >
+                        <img
+                          src={member.image}
+                          alt={member.name}
+                          className="w-20 h-20 md:w-24 md:h-24 rounded-full object-cover shadow-lg ring-4 ring-primary ring-offset-2 ring-offset-base-100 group-hover:scale-105 transition-transform duration-300"
+                        />
+                        <div className="flex flex-col gap-0.5">
+                          <div className="font-semibold text-base-content text-sm md:text-base">
+                            {member.name}
+                          </div>
+                          <div className="text-xs md:text-sm text-base-content/70 font-medium">
+                            {member.role}
+                          </div>
+                        </div>
+                      </div>
+                    ))}
+                  </motion.div>
+                </AnimatedSection>
+              </div>
+            </motion.div>
+          </div>
+        </AnimatedSection>
+
+
+        <AnimatedSection >
           <motion.div
             variants={containerVariants}
             initial="initial"
@@ -206,7 +330,7 @@ const About = () => {
             className="text-center mb-20 sm:mb-24 flex flex-col sm:flex-row gap-4 px-4 justify-center"
           >
             <Link to="/team">
-              <button className="btn btn-outline btn-primary flex items-center gap-2">
+              <button className="btn btn-outline btn-secondary flex items-center gap-2">
                 <Users size={18} /> Meet Our Team
               </button>
             </Link>
@@ -226,7 +350,8 @@ const About = () => {
               </button>
             </Link>
           </motion.div>
-        </div>
+        </AnimatedSection>
+
       </div>
     </section>
   );

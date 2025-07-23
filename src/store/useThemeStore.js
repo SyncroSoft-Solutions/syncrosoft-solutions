@@ -6,7 +6,7 @@ export const useThemeStore = create((set) => ({
 
   initializeTheme: () => {
     const saved = localStorage.getItem("set-theme");
-    const fallback = "dim";
+    const fallback = "synthwave";
     const theme = saved || fallback;
 
     document.documentElement.setAttribute("data-theme", theme);
