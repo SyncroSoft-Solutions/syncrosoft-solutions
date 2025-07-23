@@ -278,7 +278,6 @@ const About = () => {
           </div>
         </AnimatedSection>
 
-
         <AnimatedSection >
           <motion.div
             variants={containerVariants}
@@ -351,7 +350,6 @@ const About = () => {
             </Link>
           </motion.div>
         </AnimatedSection>
-
       </div>
     </section>
   );
