@@ -1,10 +1,11 @@
 import React from "react";
-import { motion } from "framer-motion";
 import { Github, ExternalLink } from "lucide-react";
 import project1 from "../assets/projects/FUNCHAT.png";
 import project2 from "../assets/projects/CWF.png";
 import SEO from "../components/SEO";
 import AnimatedBackground from "../components/AnimatedBackground";
+import { bounceStaggeredItem, bounceStaggeredContainer, bounceIn } from "../animations/sectionVariants";
+import AnimatedSection from "../components/AnimatedSection";
 
 const projects = [
   {
@@ -37,31 +38,6 @@ const badgeColors = [
   "error",
 ];
 
-const getCardVariants = (index) => {
-  const isLeft = index % 2 === 0;
-  return {
-    initial: { opacity: 0, x: isLeft ? "-100vw" : "100vw", scale: 0.95 },
-    animate: {
-      opacity: 1,
-      x: 0,
-      scale: 1,
-      transition: {
-        duration: 0.6,
-        ease: "easeOut",
-        delay: index * 0.1,
-      },
-    },
-  };
-};
-
-const containerVariants = {
-  animate: {
-    transition: {
-      staggerChildren: 0.1,
-    },
-  },
-};
-
 const Projects = () => {
   return (
     <section id="projects" className="bg-base-100 text-base-content h-screen overflow-y-auto overflow-x-hidden scroll-smooth scrollbar-hide">
@@ -75,29 +51,28 @@ const Projects = () => {
       <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 py-24">
 
         {/* Heading */}
-        <motion.h1
-          initial={{ y: 50, opacity: 0 }}
-          whileInView={{ y: 0, opacity: 1 }}
-          transition={{ duration: 0.6, ease: "easeOut" }}
-          viewport={{ once: true }}
+        <AnimatedSection variants={bounceIn}>
+        <h1
           className="text-3xl md:text-5xl lg:text-6xl font-bold text-center text-base-content mb-16"
         >
           Syncing Strategy with <span className="text-primary">Scalable Solutions</span>
-        </motion.h1>
+        </h1>
+        </AnimatedSection>
 
         {/* Project Grid */}
-        <motion.div
-          variants={containerVariants}
+        <AnimatedSection
+          variants={bounceStaggeredContainer}
           initial="initial"
           whileInView="animate"
           viewport={{ once: true }}
           className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-10"
         >
           {projects.map((project, index) => (
-            <motion.div
+            <AnimatedSection
               key={index}
-              variants={getCardVariants(index)}
-              className="group relative rounded-xl border border-base-content/10 bg-base-200/70 backdrop-blur-lg shadow-xl hover:-translate-y-1.5 transition-all duration-500 overflow-hidden"
+              custom={index}
+              variants={bounceStaggeredItem}
+              className="group relative rounded-xl border border-base-content/10 bg-base-200/70 backdrop-blur-lg shadow-xl hover:-translate-y-1.5 overflow-hidden"
               whileHover={{ y: -6 }}
             >
               {/* Image */}
@@ -107,7 +82,7 @@ const Projects = () => {
                   alt={project.name}
                   className="w-full h-60 object-cover transition-transform duration-700 group-hover:scale-110"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 z-10" />
                 <h2 className="absolute bottom-4 left-4 text-white text-lg font-bold z-20">
                   {project.name}
                 </h2>
@@ -162,9 +137,9 @@ const Projects = () => {
                   </a>
                 </div>
               </div>
-            </motion.div>
+            </AnimatedSection>
           ))}
-        </motion.div>
+        </AnimatedSection>
       </div>
     </section>
   );

@@ -15,28 +15,27 @@ function App() {
   useEffect(() => {
     initializeTheme();
 
-    const isFirstVisit = !localStorage.getItem("hasVisited");
-    const MINIMUM_LOADER_TIME = 2000; // Minimum time loader should show
-    const start = Date.now();
+    const MINIMUM_LOADER_TIME = 1500;
+    const hasVisited = localStorage.getItem('hasVisited');
 
-    // Simulate "app is ready"
-    const onAppReady = () => {
-      const elapsed = Date.now() - start;
-      const remainingTime = Math.max(MINIMUM_LOADER_TIME - elapsed, 0);
+    if (!hasVisited) {
+      const start = Date.now();
 
-      setTimeout(() => {
-        setLoading(false);
-        localStorage.setItem("hasVisited", "true");
-      }, remainingTime);
-    };
+      // Simulate app initialization (you could add more logic here)
+      const simulateInit = () => {
+        const elapsed = Date.now() - start;
+        const delay = Math.max(0, MINIMUM_LOADER_TIME - elapsed);
+        setTimeout(() => {
+          setLoading(false);
+          localStorage.setItem('hasVisited', 'true');
+        }, delay);
+      };
 
-    // For first visit: wait for both delay and app ready
-    if (isFirstVisit) {
-      // You can simulate data/image loading here if needed
-      // For now, assume app is ready immediately after mount
-      onAppReady();
+      // Start loading
+      simulateInit();
     } else {
-      setLoading(false); // Instant load on subsequent visits
+      // Skip loader for next visits
+      setLoading(false);
     }
   }, []);
 
@@ -45,7 +44,7 @@ function App() {
       <div className="relative w-screen overflow-x-hidden bg-base-100" data-theme={theme}>
         <Toaster position="top-center" reverseOrder={false} />
 
-        {/* Theme Switch */}
+        {/* Theme Selector shows only after loader */}
         <div className="fixed top-20 right-3 z-50">
           {!loading && <ThemeSelector />}
         </div>

@@ -6,6 +6,8 @@ import {
 } from "lucide-react";
 import SEO from "../components/SEO";
 import AnimatedBackground from "../components/AnimatedBackground";
+import AnimatedSection from "../components/AnimatedSection";
+import { bounceInUp, bounceStaggeredItem, bounceStaggeredContainer } from "../animations/sectionVariants";
 
 const services = [
   { icon: Code2, title: "Web Development", description: "Custom, fast-loading, mobile-friendly MERN stack websites built with modern technologies." },
@@ -17,35 +19,6 @@ const services = [
   { icon: ServerCog, title: "API Development", description: "Custom RESTful and GraphQL APIs for seamless integration and scalable services." },
   { icon: Globe2, title: "E-Commerce Solutions", description: "Build secure, fast, and user-friendly online stores with seamless payment gateways." },
 ];
-
-const getCardVariants = (index) => {
-  const isLeft = index % 2 === 0;
-  return {
-    initial: {
-      opacity: 0,
-      x: isLeft ? "-100vw" : "100vw",
-      scale: 0.95,
-    },
-    animate: {
-      opacity: 1,
-      x: 0,
-      scale: 1,
-      transition: {
-        duration: 0.6,
-        ease: "easeOut",
-        delay: index * 0.1,
-      },
-    },
-  };
-};
-
-const containerVariants = {
-  animate: {
-    transition: {
-      staggerChildren: 0.1,
-    },
-  },
-};
 
 const Services = () => {
   const { scrollYProgress } = useScroll();
@@ -59,37 +32,35 @@ const Services = () => {
         keywords="Web Development, App Development, UI/UX Design, Cloud Integration, MERN, Syncrosoft Services"
       />
 
-        <AnimatedBackground />
+      <AnimatedBackground />
       <div className="w-full max-w-7xl mx-auto px-4 sm:px-8 lg:px-12 py-24">
         {/* Heading */}
-        <motion.h1
-          initial={{ y: 60, opacity: 0 }}
-          whileInView={{ y: 0, opacity: 1 }}
-          transition={{ duration: 0.7, ease: "easeOut" }}
-          viewport={{ once: true }}
-          className="text-3xl md:text-5xl lg:text-6xl font-bold text-center text-base-content mb-16"
-        >
-          Our{" "}
-          <span className="text-primary inline-flex overflow-hidden">Services</span>
-        </motion.h1>
+        <AnimatedSection variants={bounceInUp}>
+          <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold text-center text-base-content mb-16">
+            Our{" "}
+            <span className="text-primary inline-flex overflow-hidden">Services</span>
+          </h1>
+        </AnimatedSection>
 
         {/* Grid */}
-        <motion.div
-          variants={containerVariants}
+        <AnimatedSection
+          variants={bounceStaggeredContainer}
           initial="initial"
           whileInView="animate"
           viewport={{ once: true }}
           className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-6 md:gap-8"
         >
           {services.map((service, index) => (
-            <motion.div
+            <AnimatedSection
               key={index}
-              variants={getCardVariants(index)}
-              className="card bg-base-200 border border-base-content/10 shadow-lg p-5 mb-3 rounded-2xl group hover:shadow-xl hover:scale-[1.03] transition-all duration-300 relative"
-              whileHover={{ y: -4 }}
+              variants={bounceStaggeredItem}
+              custom={index}
+              className="card bg-base-200 border border-base-content/10 shadow-lg p-5 mb-3 rounded-2xl group hover:shadow-xl hover:scale-[1.03] relative"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
             >
               {/* Glow on hover */}
-              <div className="absolute inset-0 bg-primary/5 opacity-0 group-hover:opacity-100 transition duration-300 rounded-2xl pointer-events-none" />
+              <div className="absolute inset-0 bg-primary/5 opacity-0 group-hover:opacity-100 rounded-2xl pointer-events-none" />
 
               {/* Icon */}
               <motion.div
@@ -112,9 +83,9 @@ const Services = () => {
               <p className="text-sm text-center text-base-content/80 mt-2 leading-relaxed">
                 {service.description}
               </p>
-            </motion.div>
+            </AnimatedSection>
           ))}
-        </motion.div>
+        </AnimatedSection>
       </div>
     </section>
   );

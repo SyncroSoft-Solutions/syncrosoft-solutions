@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import SEO from "../components/SEO";
 import AnimatedSection from "../components/AnimatedSection";
 import AnimatedBackground from "../components/AnimatedBackground";
+import { bounceIn, bounceStaggeredContainer, bounceStaggeredItem, fadeInLeft, fadeInRight, fadeInUp, staggerContainer } from "../animations/sectionVariants.js";
 
 import samarth from "../assets/team/samarth.jpeg";
 import rutika from "../assets/team/rutika.jpeg";
@@ -24,8 +25,6 @@ import {
   Zap,
   Atom,
   Settings2,
-  Users,
-  FolderGit2,
 } from "lucide-react";
 
 
@@ -85,34 +84,6 @@ const techStack = [
 ];
 
 const About = () => {
-  const getCardVariants = (index) => {
-    const isLeft = index % 2 === 0;
-    return {
-      initial: {
-        opacity: 0,
-        x: isLeft ? "-100vw" : "100vw",
-        scale: 0.95,
-      },
-      animate: {
-        opacity: 1,
-        x: 0,
-        scale: 1,
-        transition: {
-          duration: 0.6,
-          ease: "easeOut",
-          delay: index * 0.1,
-        },
-      },
-    };
-  };
-
-  const containerVariants = {
-    animate: {
-      transition: {
-        staggerChildren: 0.1,
-      },
-    },
-  };
 
   const { scrollYProgress } = useScroll();
   const yParallax = useTransform(scrollYProgress, [0, 1], [0, -50]);
@@ -126,15 +97,13 @@ const About = () => {
       />
       <AnimatedBackground />
       <div className="w-full max-w-7xl mx-auto px-4 sm:px-8 lg:px-12 py-24 overflow-hidden">
-        <AnimatedSection>
-          <div className="min-h-screen  py-16 lg:py-24 px-4 sm:px-8 max-w-7xl mx-auto flex flex-col justify-start items-center">
-
+        {/* {About Section} */}
+        <div className="min-h-screen  pt-16 lg:pt-24 px-4 sm:px-8 max-w-7xl mx-auto flex flex-col justify-start items-center">
+          <AnimatedSection
+            variants={fadeInUp}
+          >
             {/* Heading on Top */}
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-              viewport={{ once: true }}
+            <div
               className="text-center mb-12"
             >
               <h2 className="text-3xl md:text-5xl lg:text-6xl font-bold text-base-content mb-4">
@@ -155,16 +124,12 @@ const About = () => {
                   ]}
                 />
               </h2>
-            </motion.div>
+            </div>
+          </AnimatedSection>
 
-            {/* Two-Column Description */}
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-              viewport={{ once: true }}
-              className="grid grid-cols-1 lg:grid-cols-2 gap-10 mb-16"
-            >
+          {/* Two-Column Description */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 mb-16">
+            <AnimatedSection variants={fadeInLeft}>
               <p className="text-lg md:text-xl text-base-content/80 leading-relaxed">
                 We’re glad you’re here. At{" "}
                 <span className="text-secondary font-bold">SyncroSoft Solutions</span>, we build more than just
@@ -172,23 +137,23 @@ const About = () => {
                 <span className="text-primary font-bold">possibilities</span>, and{" "}
                 <span className="text-primary font-bold">digital experiences</span> that make a difference.
               </p>
+            </AnimatedSection>
 
+            <AnimatedSection variants={fadeInRight}>
               <p className="text-lg md:text-xl text-base-content/80 leading-relaxed">
                 Whether you're a <span className="text-accent font-semibold">startup</span> or an{" "}
                 <span className="text-accent font-semibold">enterprise</span>, you're in the right place.
                 Our <span className="text-info font-semibold">custom web solutions</span> are built for growth,
                 performance, and user experience.
               </p>
-            </motion.div>
+            </AnimatedSection>
+          </div>
 
+          <AnimatedSection
+            variants={bounceIn}
+          >
             {/* Mission Section */}
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7 }}
-              viewport={{ once: true }}
-              className="text-center max-w-3xl mx-auto mb-16"
-            >
+            <div className="text-center max-w-3xl mx-auto mb-16">
               <h3 className="text-3xl font-bold mb-4">Our Mission & Vision</h3>
               <p className="text-lg md:text-xl text-base-content/80 leading-relaxed">
                 To empower clients with{" "}
@@ -197,59 +162,58 @@ const About = () => {
                 <span className="text-secondary font-bold">smart technology</span>, and a{" "}
                 <span className="text-secondary font-bold">user-first approach</span>.
               </p>
-            </motion.div>
-
-            {/* Stats Grid */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 px-4 sm:px-6">
-              {[
-                { label: "Clients", end: 120 },
-                { label: "Projects", end: 200 },
-                { label: "Team Members", end: 10 },
-              ].map((stat, i) => (
-                <motion.div
-                  key={stat.label}
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: i * 0.2 }}
-                  viewport={{ once: true }}
-                  className="text-center"
-                >
-                  <h4 className="text-4xl font-bold text-primary">
-                    <CountUp end={stat.end} duration={3} />+
-                  </h4>
-                  <p className="text-lg font-semibold text-base-content/80 mt-1">{stat.label}</p>
-                </motion.div>
-              ))}
             </div>
-          </div>
-        </AnimatedSection>
+          </AnimatedSection>
 
-        <AnimatedSection>
-          <div className="py-16 lg:py-24">
-            <motion.div
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-              viewport={{ once: true }}
-              className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"
-            >
-              {/* Responsive Grid: 1 column on sm, 2 on md+ */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-                {/* === TEXT BLOCK === */}
-                <AnimatedSection>
-                  <motion.div
-                    initial={{ opacity: 0, y: 50 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8 }}
-                    viewport={{ once: true }}
-                  >
-                    <h2 className="text-4xl md:text-5xl font-bold text-base-content mb-4">
-                      Our <span className="text-primary underline underline-offset-4">Team</span>
-                    </h2>
-                    <p className="text-xl md:text-2xl text-base-content/80 mb-6">
-                      The <span className="text-accent font-semibold">People Behind</span> the Innovation
-                    </p>
-                    <div className="text-start">
+          {/* Stats Grid */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 px-4 sm:px-6">
+            {[
+              { label: "Clients", end: 100 },
+              { label: "Projects", end: 100 },
+              { label: "Team Members", end: 10 },
+            ].map((stat, i) => (
+              <motion.div
+                key={stat.label}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: i * 0.2 }}
+                viewport={{ once: true }}
+                className="text-center"
+              >
+                <h4 className="text-4xl font-bold text-primary">
+                  <CountUp end={stat.end} duration={3} />+
+                </h4>
+                <p className="text-lg font-semibold text-base-content/80 mt-1">{stat.label}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+
+        {/* {Team Section} */}
+        <div className="py-16 lg:pt-0">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            {/* Centered Heading */}
+            <AnimatedSection variants={bounceIn}>
+              <div className="text-center mb-16">
+                <h2 className="text-4xl md:text-5xl font-bold text-base-content mb-2">
+                  Our <span className="text-primary underline underline-offset-4">Team</span>
+                </h2>
+                <p className="text-xl md:text-2xl text-base-content/80">
+                  The <span className="text-accent font-semibold">People Behind</span> the Innovation
+                </p>
+              </div>
+            </AnimatedSection>
+
+            {/* Split Layout with Vertical Divider */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-start relative">
+              {/* Vertical Divider Line (hidden on small screens) */}
+              <div className="hidden md:block absolute left-1/2 top-0 h-full w-px bg-base-content/10"></div>
+
+              {/* === TEXT BLOCK === */}
+              <div className="md:pr-10">
+                <div>
+                  <div className="text-start">
+                    <AnimatedSection variants={bounceIn}>
                       <p className="text-lg md:text-xl text-base-content/70 mb-4 leading-relaxed">
                         At <span className="text-primary font-bold">SyncroSoft Solutions</span>, our strength lies in our{" "}
                         <span className="text-success font-semibold">people</span>. We are a team of{" "}
@@ -258,6 +222,8 @@ const About = () => {
                         <span className="text-success font-semibold">strategic thinkers</span> dedicated to building{" "}
                         <span className="text-success font-semibold">technology that works</span>.
                       </p>
+                    </AnimatedSection>
+                    <AnimatedSection variants={bounceIn}>
                       <p className="text-lg md:text-xl text-base-content/70 mb-4 leading-relaxed">
                         <span className="text-success font-semibold">Collaboration</span>,{" "}
                         <span className="text-success font-semibold">innovation</span>, and{" "}
@@ -265,75 +231,90 @@ const About = () => {
                         <span className="text-success font-semibold">smart</span>,{" "}
                         <span className="text-success font-semibold">scalable</span> solutions.
                       </p>
+                    </AnimatedSection>
+                    <AnimatedSection variants={bounceIn}>
                       <div className="text-primary text-xl md:text-2xl font-bold flex items-center gap-2 mt-4">
-                        Together, we turn vision into <span className="text-warning">value</span>
+                        Together, we turn vision into value
                       </div>
                       <Link to="/team">
                         <button className="mt-8 btn btn-primary rounded-full px-8 text-base font-semibold">
                           Meet Our Team
                         </button>
                       </Link>
-                    </div>
-                  </motion.div>
-                </AnimatedSection>
+                    </AnimatedSection>
+                  </div>
+                </div>
+              </div>
 
-                {/* === TEAM GRID === */}
-                <AnimatedSection>
+              {/* === TEAM GRID === */}
+              <div className="md:pl-10">
+                <AnimatedSection
+                  variants={staggerContainer}
+                >
                   <motion.div
                     initial={{ opacity: 0, y: 50 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8 }}
                     viewport={{ once: true }}
-                    className="grid grid-cols-2 sm:grid-cols-3 gap-4 md:gap-6 mx-auto justify-center"
+                    className="grid grid-cols-2 sm:grid-cols-3 gap-4 md:gap-6 justify-center"
                   >
                     {teamMembers.map((member) => (
-                      <div
-                        key={member.id}
-                        className="flex flex-col gap-2 items-center text-center group transition-transform duration-300"
+                      <AnimatedSection
+                        variants={bounceIn}
                       >
-                        <img
-                          src={member.image}
-                          alt={member.name}
-                          className="w-20 h-20 md:w-24 md:h-24 rounded-full object-cover shadow-lg ring-4 ring-primary ring-offset-2 ring-offset-base-100 group-hover:scale-105 transition-transform duration-300"
-                        />
-                        <div className="flex flex-col gap-0.5">
-                          <div className="font-semibold text-base-content text-sm md:text-base">
-                            {member.name}
-                          </div>
-                          <div className="text-xs md:text-sm text-base-content/70 font-medium">
-                            {member.role}
+                        <div
+                          key={member.id}
+                          className="flex flex-col gap-2 items-center text-center group transition-transform duration-300"
+                        >
+                          <img
+                            src={member.image}
+                            alt={member.name}
+                            className="w-20 h-20 md:w-24 md:h-24 rounded-full object-cover shadow-lg ring-4 ring-primary ring-offset-2 ring-offset-base-100 group-hover:scale-105 transition-transform duration-300"
+                          />
+                          <div className="flex flex-col gap-0.5">
+                            <div className="font-semibold text-base-content text-sm md:text-base">
+                              {member.name}
+                            </div>
+                            <div className="text-xs md:text-sm text-base-content/70 font-medium">
+                              {member.role}
+                            </div>
                           </div>
                         </div>
-                      </div>
+                      </AnimatedSection>
                     ))}
                   </motion.div>
                 </AnimatedSection>
               </div>
-            </motion.div>
+            </div>
           </div>
-        </AnimatedSection>
+        </div>
 
-        <AnimatedSection >
-          <motion.div
-            variants={containerVariants}
-            initial="initial"
-            whileInView="animate"
-            viewport={{ once: true }}
-            className="px-4 sm:px-6 mb-4 text-center"
-          >
+        {/* {Tech Stack Section} */}
+        <div className="px-4 sm:px-6 mb-4 text-center">
+          <AnimatedSection variants={bounceIn} >
             <h2 className="text-3xl font-bold mb-4">Our Tech Stack</h2>
             <p className="text-lg md:text-2xl text-base-content/80 max-w-2xl mx-auto mb-10 leading-relaxed">
               We use a combination of modern <span className="text-primary font-semibold">frameworks</span>, <span className="text-secondary font-semibold">tools</span>, and <span className="text-accent font-semibold">libraries</span> to build reliable, scalable, and visually appealing applications tailored to business needs.
             </p>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:pt-4">
-              {techStack.map((tech, index) => (
-                <motion.div
+          </AnimatedSection>
+          <AnimatedSection
+            variants={bounceStaggeredContainer}
+            initial="initial"
+            whileInView="animate"
+            viewport={{ once: true }}
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:pt-4">
+            {techStack.map((tech,index) => (
+              <AnimatedSection
+                key={index}
+                variants={bounceStaggeredItem}
+                custom={index}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }} >
+                <div
                   key={tech.name}
-                  variants={getCardVariants(index)}
-                  className="card bg-base-200 border border-base-content/10 shadow-lg p-5 rounded-2xl group hover:shadow-xl hover:scale-[1.03] transition-all duration-300 relative mb-3"
-                  whileHover={{ y: -4 }}
+                  className="card bg-base-200 border border-base-content/10 shadow-lg p-5 rounded-2xl group hover:shadow-xl hover:scale-[1.03] relative mb-3"
                 >
-                  <div className="absolute inset-0 bg-primary/5 opacity-0 group-hover:opacity-100 transition duration-300 rounded-2xl pointer-events-none" />
+                  <div className="absolute inset-0 bg-primary/5 opacity-0 group-hover:opacity-100 rounded-2xl pointer-events-none" />
                   <motion.div
                     style={{ y: yParallax }}
                     whileHover={{ rotate: [0, 10, -10, 0] }}
@@ -352,40 +333,19 @@ const About = () => {
                   <p className="text-base text-base-content/70 leading-snug">
                     {tech.about}
                   </p>
-                </motion.div>
-              ))}
-            </div>
-          </motion.div>
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7 }}
-            viewport={{ once: true }}
-            className="text-center mb-20 sm:mb-24 flex flex-col sm:flex-row gap-4 px-4 justify-center"
-          >
-            <Link to="/team">
-              <button className="btn btn-outline btn-secondary flex items-center gap-2">
-                <Users size={18} /> Meet Our Team
-              </button>
-            </Link>
-            <Link to="/projects">
-              <button className="btn btn-outline btn-secondary flex items-center gap-2">
-                <FolderGit2 size={18} /> Our Team Work
-              </button>
-            </Link>
-          </motion.div>
+                </div>
+              </AnimatedSection>
+            ))}
+          </AnimatedSection>
+        </div>
 
-          <motion.div
-            whileHover={{ scale: 1.05 }}
-            className="fixed bottom-5 right-5 z-50"
-          >
-            <Link to="/contact">
-              <button className="btn btn-primary btn-circle shadow-xl">
-                <ArrowUpRight />
-              </button>
-            </Link>
-          </motion.div>
-        </AnimatedSection>
+        <div className="fixed bottom-5 right-5 z-50">
+          <Link to="/contact">
+            <button className="btn btn-primary btn-circle shadow-xl">
+              <ArrowUpRight />
+            </button>
+          </Link>
+        </div>
       </div>
     </section>
   );
