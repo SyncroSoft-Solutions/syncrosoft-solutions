@@ -39,11 +39,11 @@ export const THEMES = [
     label: "Synthwave",
     colors: ["#2d1b69", "#e779c1", "#58c7f3", "#f8f8f2"],
   },
-  {
-    name: "retro",
-    label: "Retro",
-    colors: ["#e4d8b4", "#ea6962", "#6aaa64", "#282425"],
-  },
+  // {
+  //   name: "retro",
+  //   label: "Retro",
+  //   colors: ["#e4d8b4", "#ea6962", "#6aaa64", "#282425"],
+  // },
   {
     name: "cyberpunk",
     label: "Cyberpunk",
@@ -134,11 +134,11 @@ export const THEMES = [
     label: "Night",
     colors: ["#0f172a", "#38bdf8", "#818cf8", "#e2e8f0"],
   },
-  {
-    name: "coffee",
-    label: "Coffee",
-    colors: ["#20161f", "#dd9866", "#497174", "#eeeeee"],
-  },
+  // {
+  //   name: "coffee",
+  //   label: "Coffee",
+  //   colors: ["#20161f", "#dd9866", "#497174", "#eeeeee"],
+  // },
   // {
   //   name: "winter",
   //   label: "Winter",

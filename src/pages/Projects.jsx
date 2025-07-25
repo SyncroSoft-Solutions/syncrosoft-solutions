@@ -73,7 +73,7 @@ const Projects = () => {
               custom={index}
               variants={bounceStaggeredItem}
               className="group relative rounded-xl border border-base-content/10 bg-base-200/70 backdrop-blur-lg shadow-xl hover:-translate-y-1.5 overflow-hidden"
-              whileHover={{ y: -6 }}
+              whileHover={{ y: -5 }}
             >
               {/* Image */}
               <div className="relative overflow-hidden">

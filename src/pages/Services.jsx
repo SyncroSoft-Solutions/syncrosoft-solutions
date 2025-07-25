@@ -56,7 +56,7 @@ const Services = () => {
               variants={bounceStaggeredItem}
               custom={index}
               className="card bg-base-200 border border-base-content/10 shadow-lg p-5 mb-3 rounded-2xl group hover:shadow-xl hover:scale-[1.03] relative"
-              whileHover={{ scale: 1.05 }}
+              whileHover={{ scale: 1 }}
               whileTap={{ scale: 0.95 }}
             >
               {/* Glow on hover */}

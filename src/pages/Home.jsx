@@ -2,9 +2,10 @@ import React from 'react';
 import SEO from '../components/SEO';
 import Hero from '../components/Hero';
 import About from '../components/About';
-import Footer from '../components/Footer';
 import AnimatedBackground from '../components/AnimatedBackground';
-
+import Testimonials from '../components/Testimonials';
+import ServicesPreview from '../components/ServicesPreview';
+import Footer from '../components/Footer';
 
 function Home() {
 
@@ -20,7 +21,9 @@ function Home() {
       </div>
       <Hero />
       <About />
-      <Footer />
+      <ServicesPreview />
+      <Testimonials />
+      <Footer/>
     </main>
   );
 }

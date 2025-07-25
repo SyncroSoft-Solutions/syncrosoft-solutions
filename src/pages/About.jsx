@@ -17,7 +17,6 @@ import rohit from "../assets/team/rohit.jpeg";
 import Typingtext from "../components/Typingtext";
 
 import {
-  ArrowUpRight,
   Code,
   Cpu,
   Database,
@@ -26,6 +25,7 @@ import {
   Atom,
   Settings2,
 } from "lucide-react";
+import Footer from "../components/Footer.jsx";
 
 
 const teamMembers = [
@@ -98,7 +98,7 @@ const About = () => {
       <AnimatedBackground />
       <div className="w-full max-w-7xl mx-auto px-4 sm:px-8 lg:px-12 py-24 overflow-hidden">
         {/* {About Section} */}
-        <div className="min-h-screen  pt-16 lg:pt-24 px-4 sm:px-8 max-w-7xl mx-auto flex flex-col justify-start items-center">
+        <div className="min-h-screen pt-16 lg:pt-24 px-4 sm:px-8 max-w-7xl mx-auto flex flex-col justify-start items-center">
           <AnimatedSection
             variants={fadeInUp}
           >
@@ -303,12 +303,12 @@ const About = () => {
             whileInView="animate"
             viewport={{ once: true }}
             className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:pt-4">
-            {techStack.map((tech,index) => (
+            {techStack.map((tech, index) => (
               <AnimatedSection
                 key={index}
                 variants={bounceStaggeredItem}
                 custom={index}
-                whileHover={{ scale: 1.05 }}
+                whileHover={{ scale: 1 }}
                 whileTap={{ scale: 0.95 }} >
                 <div
                   key={tech.name}
@@ -338,15 +338,8 @@ const About = () => {
             ))}
           </AnimatedSection>
         </div>
-
-        <div className="fixed bottom-5 right-5 z-50">
-          <Link to="/contact">
-            <button className="btn btn-primary btn-circle shadow-xl">
-              <ArrowUpRight />
-            </button>
-          </Link>
-        </div>
       </div>
+      <Footer />
     </section>
   );
 };

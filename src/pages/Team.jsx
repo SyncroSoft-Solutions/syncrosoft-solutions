@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { motion } from "framer-motion";
 import TeamCard from "../components/TeamCard";
 import SAMARTH from "../assets/team/samarth.jpeg";
 import RUTIKA from "../assets/team/rutika.jpeg";
@@ -10,6 +9,8 @@ import ABHISHEK from "../assets/team/abhishek.jpeg";
 import ROHIT from "../assets/team/rohit.jpeg";
 import SEO from "../components/SEO";
 import AnimatedBackground from "../components/AnimatedBackground";
+import AnimatedSection from "../components/AnimatedSection";
+import { bounceIn, zoomIn } from "../animations/sectionVariants";
 
 const teamMembers = [
   {
@@ -123,16 +124,12 @@ const Team = () => {
       <div className="w-full max-w-7xl mx-auto px-4 sm:px-8 lg:px-12 py-24 overflow-hidden">
 
         {/* Heading */}
-        <motion.h1
-          initial={{ y: 60, opacity: 0 }}
-          whileInView={{ y: 0, opacity: 1 }}
-          transition={{ duration: 0.7, ease: "easeOut" }}
-          viewport={{ once: true }}
-          className="text-3xl md:text-5xl lg:text-6xl font-bold text-center text-base-content mb-16"
-        >
-          Meet Our{" "}
-          <span className="text-primary inline-flex overflow-hidden">Team</span>
-        </motion.h1>
+        <AnimatedSection variants={bounceIn}>
+          <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold text-center text-base-content mb-16">
+            Meet Our{" "}
+            <span className="text-primary inline-flex overflow-hidden">Team</span>
+          </h1>
+        </AnimatedSection>
 
         <div className="carousel w-full">
           {groupedMembers.map((group, index) => {
@@ -146,22 +143,18 @@ const Team = () => {
                 id={slideId}
                 className="carousel-item relative w-full flex justify-center"
               >
-                <motion.div
-                  initial={{ opacity: 0 }}
-                  whileInView={{ opacity: 1 }}
-                  transition={{ duration: 0.8, ease: "easeInOut" }}
-                  viewport={{ once: true }}
-                  className="w-full flex gap-6 justify-center flex-wrap px-2"
-                >
+                <div className="w-full flex gap-6 justify-center flex-wrap px-2">
                   {group.map((member) => (
                     <div
                       key={member.id}
                       className="w-full sm:w-[80%] md:w-[45%] lg:w-[30%] max-w-sm"
                     >
-                      <TeamCard member={member} />
+                      <AnimatedSection variants={zoomIn}>
+                        <TeamCard member={member} />
+                      </AnimatedSection>
                     </div>
                   ))}
-                </motion.div>
+                </div>
 
                 {/* Arrow buttons */}
                 <div className="absolute z-40 left-5 right-5 top-1/2 flex justify-between transform -translate-y-1/2">

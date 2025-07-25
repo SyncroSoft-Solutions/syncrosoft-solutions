@@ -17,22 +17,35 @@ export const fadeInDown = {
 };
 
 export const fadeInLeft = {
-  hidden: { opacity: 0, x: -60 },
+  hidden: {
+    opacity: 0,
+    x: -100,
+  },
   visible: {
     opacity: 1,
     x: 0,
-    transition: { duration: 0.6, ease: "easeOut" },
+    transition: {
+      duration: 0.8,
+      ease: [0.25, 0.8, 0.25, 1], // smoother ease
+    },
   },
 };
 
 export const fadeInRight = {
-  hidden: { opacity: 0, x: 60 },
+  hidden: {
+    opacity: 0,
+    x: 100,
+  },
   visible: {
     opacity: 1,
     x: 0,
-    transition: { duration: 0.6, ease: "easeOut" },
+    transition: {
+      duration: 0.8,
+      ease: [0.25, 0.8, 0.25, 1],
+    },
   },
 };
+
 
 export const zoomIn = {
   hidden: { opacity: 0, scale: 0.9 },

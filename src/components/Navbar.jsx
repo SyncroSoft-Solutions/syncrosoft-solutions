@@ -41,42 +41,40 @@ const Navbar = () => {
       variants={navbarVariants}
       initial="hidden"
       animate="visible"
-      className="fixed top-0 z-50 w-full bg-base-100 shadow-md border-b-2 border-base-content/5"
+      className="fixed top-0 z-50 w-full py-2 backdrop-blur-lg bg-base-100/80 border-b border-base-content/10 shadow-md"
     >
-      <div className="flex items-center justify-between px-4 py-1">
-        <div className="max-w-[160px] md:max-w-none">
+      <div className="flex items-center justify-between px-4 sm:px-8 lg:px-12 h-full">
+        {/* Logo */}
+        <div className="max-w-[190px]">
           <Logo />
         </div>
 
-        {/* Desktop Menu (Icons only) */}
+        {/* Desktop Nav */}
         <motion.nav
           className="hidden lg:flex items-center gap-10"
           initial="hidden"
           animate="visible"
         >
-          {navItems.map(({ name, path, icon: Icon }) => (
+          {navItems.map(({ name, path }) => (
             <motion.div
               key={name}
               variants={navItemVariants}
-              whileHover={{ scale: 1.1, y: -2 }}
             >
               <Link
                 to={path}
-                title={name}
-                className={`flex items-center text-[17px] font-medium transition duration-300 ${
+                className={`text-[17px] font-medium transition duration-300 ${
                   location.pathname === path
                     ? "text-primary border-b-2 border-primary pb-1"
                     : "hover:text-primary"
                 }`}
               >
-                {/* <Icon size={22} /> */}
-                <span className="hidden lg:inline">{name}</span>
+                {name}
               </Link>
             </motion.div>
           ))}
         </motion.nav>
 
-        {/* Mobile Menu Button */}
+        {/* Mobile Toggle */}
         <div className="lg:hidden">
           <button
             className="btn btn-ghost btn-circle"
@@ -84,34 +82,12 @@ const Navbar = () => {
             aria-label="Toggle mobile menu"
           >
             {menuOpen ? (
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-7 w-7"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M6 18L18 6M6 6l12 12"
-                />
+              <svg className="h-7 w-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
               </svg>
             ) : (
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-7 w-7"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M4 6h16M4 12h16M4 18h16"
-                />
+              <svg className="h-7 w-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
               </svg>
             )}
           </button>
@@ -127,7 +103,7 @@ const Navbar = () => {
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
             transition={{ duration: 0.35, ease: "easeInOut" }}
-            className="lg:hidden overflow-hidden bg-base-100 shadow-md"
+            className="lg:hidden overflow-hidden bg-base-100/80 backdrop-blur-md shadow-md"
           >
             <ul className="flex flex-col gap-4 p-6">
               {navItems.map(({ name, path, icon: Icon }) => (
@@ -141,7 +117,7 @@ const Navbar = () => {
                         : "hover:text-primary"
                     }`}
                   >
-                    <Icon size={22} />
+                    <Icon size={20} />
                     {name}
                   </Link>
                 </li>

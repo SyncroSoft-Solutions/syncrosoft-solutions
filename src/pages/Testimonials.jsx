@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
 import axios from "../api/axios";
 import SEO from "../components/SEO";
-import { motion } from "framer-motion";
 import { Send } from "lucide-react";
 import { toast } from "react-hot-toast";
 import AnimatedBackground from "../components/AnimatedBackground";
+import AnimatedSection from '../components/AnimatedSection';
+import { bounceIn, bounceStaggeredContainer, bounceStaggeredItem } from "../animations/sectionVariants";
 
 const Testimonials = () => {
   const [feedbacks, setFeedbacks] = useState([]);
@@ -56,92 +57,94 @@ const Testimonials = () => {
       />
       <div className="w-full max-w-7xl mx-auto px-4 sm:px-8 lg:px-12 py-24 overflow-hidden">
         <AnimatedBackground />
-        <motion.h1
-          initial={{ y: 40, opacity: 0 }}
-          whileInView={{ y: 0, opacity: 1 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
-          className="text-3xl md:text-5xl font-bold text-center mb-12"
-        >
-          What Our <span className="text-primary">Clients Say</span>
-        </motion.h1>
+        <AnimatedSection variants={bounceIn}>
+          <h1
+            initial={{ y: 40, opacity: 0 }}
+            whileInView={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+            className="text-3xl md:text-5xl font-bold text-center mb-12"
+          >
+            What Our <span className="text-primary">Clients Say</span>
+          </h1>
+        </AnimatedSection>
 
         {/* Feedback Form */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.9 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.5 }}
-          viewport={{ once: true }}
-          className="max-w-xl mx-auto card bg-base-200 shadow-xl p-6 mb-12"
+        <AnimatedSection
+          variants={bounceIn}
         >
-          <h2 className="text-xl font-semibold mb-4">Leave Your Feedback</h2>
-          <form onSubmit={handleSubmit} className="space-y-4">
-            <div>
-              <input
-                type="text"
-                name="name"
-                placeholder="Your Name"
-                value={formData.name}
-                onChange={handleChange}
-                className="input input-bordered w-full"
-                onKeyDown={handleKeyDown}
-              />
-            </div>
-            <div>
-              <textarea
-                name="message"
-                rows="4"
-                placeholder="Your Message"
-                value={formData.message}
-                onChange={handleChange}
-                onKeyDown={handleKeyDown}
-                className="textarea textarea-bordered w-full"
-              ></textarea>
-            </div>
-            <button
-              type="submit"
-              className="btn btn-primary flex items-center gap-2"
-            >
-              Submit <Send size={16} />
-            </button>
-          </form>
-        </motion.div>
+          <div className="max-w-xl mx-auto card bg-base-200 shadow-xl p-6 mb-12">
+            <h2 className="text-xl font-semibold mb-4">Leave Your Feedback</h2>
+            <form onSubmit={handleSubmit} className="space-y-4">
+              <div>
+                <input
+                  type="text"
+                  name="name"
+                  placeholder="Your Name"
+                  value={formData.name}
+                  onChange={handleChange}
+                  className="input input-bordered w-full"
+                  onKeyDown={handleKeyDown}
+                />
+              </div>
+              <div>
+                <textarea
+                  name="message"
+                  rows="4"
+                  placeholder="Your Message"
+                  value={formData.message}
+                  onChange={handleChange}
+                  onKeyDown={handleKeyDown}
+                  className="textarea textarea-bordered w-full"
+                ></textarea>
+              </div>
+              <button
+                type="submit"
+                className="btn btn-primary flex items-center gap-2"
+              >
+                Submit <Send size={16} />
+              </button>
+            </form>
+          </div>
+        </AnimatedSection>
 
         {/* Testimonials */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+        <AnimatedSection
+          variants={bounceStaggeredContainer}
+          initial="initial"
+          whileInView="animate"
+          viewport={{ once: true }}
+          className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
           {feedbacks.map((feedback, index) => {
-            const isEven = index % 2 === 0;
-
             return (
-              <motion.div
-                key={feedback._id || index}
-                initial={{ y: isEven ? 50 : -50, opacity: 0 }}
-                whileInView={{ y: 0, opacity: 1 }}
-                transition={{ duration: 0.6, delay: index * 0.15 }}
-                viewport={{ once: true }}
-                className="bg-base-200 p-6 rounded-2xl shadow-md hover:shadow-xl transition-all border border-base-300"
+              <AnimatedSection
+                key={index}
+                variants={bounceStaggeredItem}
+                custom={index}
+                whileHover={{ scale: 1 }}
+                whileTap={{ scale: 0.5 }}
               >
-                <div className="flex items-center gap-4 mb-4">
-                  <div className="w-12 h-12 rounded-full bg-primary text-primary-content flex items-center justify-center text-lg font-bold shadow-md">
-                    {feedback.name.charAt(0).toUpperCase()}
+                <div className="bg-base-200 p-6 rounded-2xl shadow-md hover:shadow-xl border border-base-300" >
+                  <div className="flex items-center gap-4 mb-4">
+                    <div className="w-12 h-12 rounded-full bg-primary text-primary-content flex items-center justify-center text-lg font-bold shadow-md">
+                      {feedback.name.charAt(0).toUpperCase()}
+                    </div>
+                    <div>
+                      <h3 className="text-lg font-semibold text-primary">
+                        {feedback.name}
+                      </h3>
+                      <p className="text-sm text-base-content/60">Client Feedback</p>
+                    </div>
                   </div>
-                  <div>
-                    <h3 className="text-lg font-semibold text-primary">
-                      {feedback.name}
-                    </h3>
-                    <p className="text-sm text-base-content/60">Client Feedback</p>
-                  </div>
+                  <p className="text-base-content/80 leading-relaxed text-sm">
+                    “{feedback.message}”
+                  </p>
                 </div>
-                <p className="text-base-content/80 leading-relaxed text-sm">
-                  “{feedback.message}”
-                </p>
-              </motion.div>
+              </AnimatedSection>
             );
           })}
-        </div>
+        </AnimatedSection>
       </div>
-
-
     </section>
   );
 };

@@ -41,7 +41,7 @@ function App() {
 
   return (
     <BrowserRouter>
-      <div className="relative w-screen overflow-x-hidden bg-base-100" data-theme={theme}>
+      <div className="overflow-hidden" data-theme={theme}>
         <Toaster position="top-center" reverseOrder={false} />
 
         {/* Theme Selector shows only after loader */}
