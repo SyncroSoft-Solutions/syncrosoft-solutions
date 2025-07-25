@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Link, useLocation } from "react-router-dom";
 import Logo from "./Logo";
+import AnimatedBurgerButton from "./AnimatedBurgerButton";
 import {
   Home,
   Info,
@@ -45,7 +46,7 @@ const Navbar = () => {
     >
       <div className="flex items-center justify-between px-4 sm:px-8 lg:px-12 h-full">
         {/* Logo */}
-        <div className="max-w-[190px]">
+        <div className="max-w-[160px]">
           <Logo />
         </div>
 
@@ -62,11 +63,10 @@ const Navbar = () => {
             >
               <Link
                 to={path}
-                className={`text-[17px] font-medium transition duration-300 ${
-                  location.pathname === path
+                className={`text-[17px] font-medium transition duration-300 ${location.pathname === path
                     ? "text-primary border-b-2 border-primary pb-1"
                     : "hover:text-primary"
-                }`}
+                  }`}
               >
                 {name}
               </Link>
@@ -81,15 +81,9 @@ const Navbar = () => {
             onClick={() => setMenuOpen(!menuOpen)}
             aria-label="Toggle mobile menu"
           >
-            {menuOpen ? (
-              <svg className="h-7 w-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-              </svg>
-            ) : (
-              <svg className="h-7 w-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-              </svg>
-            )}
+            <div className="lg:hidden">
+              <AnimatedBurgerButton menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
+            </div>
           </button>
         </div>
       </div>
@@ -111,11 +105,10 @@ const Navbar = () => {
                   <Link
                     to={path}
                     onClick={() => setMenuOpen(false)}
-                    className={`flex items-center gap-3 text-lg font-medium transition duration-300 ${
-                      location.pathname === path
+                    className={`flex items-center gap-3 text-lg font-medium transition duration-300 ${location.pathname === path
                         ? "text-primary border-b-2 border-primary pb-1"
                         : "hover:text-primary"
-                    }`}
+                      }`}
                   >
                     <Icon size={20} />
                     {name}

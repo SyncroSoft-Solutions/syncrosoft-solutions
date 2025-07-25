@@ -14,7 +14,7 @@ import { bounceIn, fadeInLeft, fadeInRight } from "../animations/sectionVariants
 
 const Footer = () => {
   return (
-    <footer className="bg-base-300 text-base-content border-t border-base-300">
+    <footer className="bg-base-300 relative text-base-content border-t border-base-300">
       {/* Animated Header or Intro */}
       <AnimatedSection variants={bounceIn}>
         <div className="text-center py-8 px-4 sm:px-8 lg:px-12">

@@ -56,7 +56,7 @@ const teamMembers = [
   {
     id: 5,
     name: "Sohan Kendre",
-    role: "Frontend Developer",
+    role: "Java Developer",
     photo: SOHAN,
     email: "mailto:sohan.syncrosoft@gmail.com",
     phone: "tel:+919322653708",

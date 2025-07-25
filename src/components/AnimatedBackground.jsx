@@ -1,67 +1,70 @@
-import React, { useEffect, useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import React from "react";
+import { motion } from "framer-motion";
 
-const rotatingPatterns = [
-  "absolute top-1/2 left-16 -translate-y-1/2 w-64 h-64 md:w-80 md:h-80 bg-gradient-to-br from-primary via-accent to-secondary rounded-full blur-3xl",
-  "absolute top-1/2 right-16 -translate-y-1/2 w-64 h-64 md:w-80 md:h-80 bg-gradient-to-bl from-secondary via-primary to-accent rounded-full blur-3xl",
-  "absolute bottom-16 left-1/2 -translate-x-1/2 w-72 h-72 md:w-96 md:h-96 bg-gradient-to-tr from-primary via-accent to-secondary rounded-full blur-3xl",
-  "absolute top-16 left-1/2 -translate-x-1/2 w-64 h-64 md:w-80 md:h-80 bg-gradient-to-b from-warning via-accent to-info rounded-full blur-3xl",
-  "absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-72 h-72 md:w-[28rem] md:h-[28rem] bg-gradient-to-br from-info via-success to-warning rounded-full blur-3xl",
+// Number of stars
+const starCount = 80;
+
+// DaisyUI theme hex values (you can customize this if you change your theme)
+const themeColors = [
+  "#6366f1", // primary (indigo)
+  "#06b6d4", // accent (cyan)
+  "#3b82f6", // info (blue)
+  "#ec4899", // secondary (pink)
+  "#f59e0b", // warning (amber)
+  "#10b981", // success (green)
 ];
 
+const generateStars = () => {
+  return Array.from({ length: starCount }, (_, i) => {
+    const size = Math.random() * 2 + 1; // 1–3px
+    const x = Math.random() * 100;
+    const y = Math.random() * 100;
+    const color = themeColors[Math.floor(Math.random() * themeColors.length)];
+    const delay = Math.random() * 5;
+    const opacity = 0.2 + Math.random() * 0.4;
+
+    return {
+      key: i,
+      x,
+      y,
+      size,
+      color,
+      delay,
+      opacity,
+    };
+  });
+};
+
+const stars = generateStars();
+
 const AnimatedBackground = () => {
-  const [index, setIndex] = useState(0);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setIndex((prev) => (prev + 1) % rotatingPatterns.length);
-    }, 5000); // ⏱️ Change pattern every 15 seconds
-    return () => clearInterval(interval);
-  }, []);
-
   return (
-    <div className="fixed inset-0 z-0 pointer-events-none">
-      {/* 🌙 Static Glow Layers */}
-      {/* 🌟 Top Left Corner */}
-      <motion.div
-        initial={{ opacity: 0, scale: 0.8 }}
-        animate={{ opacity: 0.15, scale: 1 }}
-        transition={{ duration: 1.2, ease: "easeOut" }}
-        className="absolute -top-24 -left-24 w-80 h-80 bg-gradient-to-br from-primary via-secondary to-accent rounded-full blur-3xl"
-      />
-      {/* 🌟 Bottom Right Corner */}
-      <motion.div
-        initial={{ opacity: 0, scale: 0.8 }}
-        animate={{ opacity: 0.12, scale: 1 }}
-        transition={{ duration: 1.4, ease: "easeOut", delay: 0.2 }}
-        className="absolute -bottom-24 -right-24 w-80 h-80 bg-gradient-to-tr from-accent via-primary to-secondary rounded-full blur-3xl"
-      />
-      {/* 🌟 Top Right Corner */}
-      <motion.div 
-        initial={{ opacity: 0, scale: 0.8 }}
-        animate={{ opacity: 0.13, scale: 1 }}
-        transition={{ duration: 1.3, ease: "easeOut", delay: 0.3 }}
-        className="absolute -top-24 -right-24 w-80 h-80 bg-gradient-to-bl from-accent via-primary to-secondary rounded-full blur-3xl"
-      />
-
-      {/* 🌿 Bottom Left Corner */}
-      <motion.div
-        initial={{ opacity: 0, scale: 0.8 }}
-        animate={{ opacity: 0.14, scale: 1 }}
-        transition={{ duration: 1.4, ease: "easeOut", delay: 0.4 }}
-        className="absolute -bottom-24 -left-24 w-80 h-80 bg-gradient-to-tl from-primary via-secondary to-accent rounded-full blur-3xl"
-      />
-      {/* 🔁 Rotating Pattern */}
-      <AnimatePresence mode="wait">
+    <div className="fixed inset-0 z-0 pointer-events-none overflow-hidden">
+      {stars.map((star) => (
         <motion.div
-          key={index}
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 0.18, scale: 1 }}
-          exit={{ opacity: 0, scale: 0.95 }}
-          transition={{ duration: 1.5, ease: "easeOut" }}
-          className={rotatingPatterns[index]}
+          key={star.key}
+          className="absolute rounded-full mix-blend-screen"
+          style={{
+            top: `${star.y}%`,
+            left: `${star.x}%`,
+            width: `${star.size}px`,
+            height: `${star.size}px`,
+            backgroundColor: star.color,
+            opacity: star.opacity,
+            boxShadow: `0 0 6px ${star.color}`,
+          }}
+          animate={{
+            opacity: [star.opacity, 1, star.opacity],
+            scale: [1, 1.4, 1],
+          }}
+          transition={{
+            duration: 2.5 + Math.random() * 2,
+            repeat: Infinity,
+            ease: "easeInOut",
+            delay: star.delay,
+          }}
         />
-      </AnimatePresence>
+      ))}
     </div>
   );
 };

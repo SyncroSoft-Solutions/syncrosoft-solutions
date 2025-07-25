@@ -16,14 +16,14 @@ function Home() {
         description="Learn more about Syncrosoft Solutions and our team."
         keywords="Syncrosoft Solutions, About Us, IT Company"
       />
+      <AnimatedBackground />
       <div className='relative z-10'>
-        <AnimatedBackground />
+        <Hero />
+        <About />
+        <ServicesPreview />
+        <Testimonials />
+        <Footer />
       </div>
-      <Hero />
-      <About />
-      <ServicesPreview />
-      <Testimonials />
-      <Footer/>
     </main>
   );
 }

@@ -33,7 +33,7 @@ const teamMembers = [
   { id: 2, name: "Ajay Kandhare", role: "Full Stack Developer", image: ajay },
   { id: 3, name: "Rutika Ekshinge", role: "Project Manager", image: rutika },
   { id: 4, name: "Sadhana Jadhav", role: "Data Analyst", image: sadhana },
-  { id: 5, name: "Sohan Kendre", role: "Frontend Developer", image: sohan },
+  { id: 5, name: "Sohan Kendre", role: "Java Developer", image: sohan },
   { id: 6, name: "Abhishek Jaiswar", role: "Full Stack Developer", image: abhishek },
   { id: 7, name: "Rohit Gaware", role: "Digital Marketing", image: rohit },
 ];

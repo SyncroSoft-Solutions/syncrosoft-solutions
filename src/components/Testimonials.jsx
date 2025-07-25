@@ -4,7 +4,7 @@ import { MessageCircle } from "lucide-react";
 import { toast } from "react-hot-toast";
 import AnimatedBackground from "../components/AnimatedBackground";
 import AnimatedSection from "../components/AnimatedSection";
-import { bounceIn, bounceInDown, bounceInUp, bounceStaggeredContainer, bounceStaggeredItem } from "../animations/sectionVariants";
+import { bounceIn, bounceInUp, bounceStaggeredContainer, bounceStaggeredItem } from "../animations/sectionVariants";
 import { Link } from "react-router-dom";
 
 const Testimonials = () => {
