@@ -49,7 +49,7 @@ const AnimatedSection = ({
       animate={controls}
       variants={resolvedVariants}
       custom={custom}
-      className={`will-change-transform ${className}`} // GPU optimized
+      className={`will-change-transform sm:will-change-auto ${className}`} // GPU optimized
       whileHover={whileHover}
       whileTap={whileTap}
     >
