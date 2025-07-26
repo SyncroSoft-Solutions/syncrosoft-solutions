@@ -1,19 +1,19 @@
 import React, { useRef, useEffect } from "react";
 import { motion, useAnimation, useInView } from "framer-motion";
-import { fadeInUp } from "../animations/sectionVariants"; // fallback
+import { fadeInUp } from "../animations/sectionVariants";
 
 const AnimatedSection = ({
   children,
   className = "",
-  variants = fadeInUp,      // default fallback animation
-  as = "div",               // motion.div, motion.section, etc.
-  amount = 0.3,             // how much in-view triggers it
-  delay = 0,                // custom delay for animation
-  duration = 0.6,           // duration override
-  once = true,              // only animate once?
-  custom = null,            // for index-based animation
-  whileHover = undefined,  // optional whileHover motion
-  whileTap = undefined,    // optional whileTap motion
+  variants = fadeInUp,
+  as = "div",
+  amount = 0.3,
+  delay = 0,
+  duration = 0.6,
+  once = true,
+  custom = null,
+  whileHover,
+  whileTap,
 }) => {
   const Component = motion[as] || motion.div;
   const ref = useRef(null);
@@ -37,6 +37,7 @@ const AnimatedSection = ({
               ...(variants.visible?.transition || {}),
               delay,
               duration,
+              ease: "easeOut", // smoother on mobile
             },
           },
         };
@@ -48,7 +49,7 @@ const AnimatedSection = ({
       animate={controls}
       variants={resolvedVariants}
       custom={custom}
-      className={className}
+      className={`will-change-transform ${className}`} // GPU optimized
       whileHover={whileHover}
       whileTap={whileTap}
     >
