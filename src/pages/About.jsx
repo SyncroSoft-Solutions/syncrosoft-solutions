@@ -89,16 +89,16 @@ const About = () => {
   const yParallax = useTransform(scrollYProgress, [0, 1], [0, -50]);
 
   return (
-    <section className="bg-base-100 text-base-content h-screen overflow-y-auto overflow-x-hidden scrollbar-hide">
+    <section className="bg-base-100 relative text-base-content h-screen overflow-y-auto overflow-x-hidden scroll-smooth scrollbar-hide">
       <SEO
         title="About"
         description="About SyncroSoft"
         keywords="about, team, syncrosoft, software development, web, react, node, express, mongodb"
       />
       <AnimatedBackground />
-      <div className="w-full max-w-7xl mx-auto px-4 sm:px-8 lg:px-12 py-24 overflow-hidden">
+      <div className="w-full max-w-7xl mx-auto px-0 sm:px-8 lg:px-12 pt-24 overflow-hidden">
         {/* {About Section} */}
-        <div className="min-h-screen pt-16 lg:pt-24 px-4 sm:px-8 max-w-7xl mx-auto flex flex-col justify-start items-center">
+        <div className="min-h-screen bg-base-100 py-10 lg:pt-24 px-4 sm:px-8 max-w-7xl mx-auto flex flex-col justify-start items-center">
           <AnimatedSection
             variants={fadeInUp}
           >
@@ -166,25 +166,20 @@ const About = () => {
           </AnimatedSection>
 
           {/* Stats Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3   gap-8 px-4 sm:px-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 px-4 sm:px-6">
             {[
               { label: "Our Clients", end: 20 },
               { label: "Our Projects", end: 5 },
               { label: "Team Members", end: 7 },
             ].map((stat) => (
-              <AnimatedSection variants={bounceIn}>
-                <div
-                  key={stat.label}
-                  className="card bg-gradient-to-br from-primary/10 via-base-100 to-base-200 border border-base-content/5 shadow-lg rounded-xl hover:shadow-xl"
-                >
-                  <div className="card-body p-5 items-center text-center">
-                    <h4 className="text-3xl lg:text-5xl font-extrabold text-primary">
-                      <CountUp end={stat.end} duration={9.5} />+
-                    </h4>
-                    <p className="text-lg lg:text-xl font-semibold text-base-content/70 mt-1">
-                      {stat.label}
-                    </p>
-                  </div>
+              <AnimatedSection key={stat.label} variants={bounceIn}>
+                <div className="flex flex-col items-center justify-center text-center p-6 rounded-xl shadow-sm bg-base-100 hover:shadow-md transition duration-300">
+                  <h4 className="text-3xl lg:text-5xl font-extrabold text-primary">
+                    <CountUp end={stat.end} duration={9.5} />+
+                  </h4>
+                  <p className="text-lg lg:text-xl font-semibold text-base-content/90 mt-1">
+                    {stat.label}
+                  </p>
                 </div>
               </AnimatedSection>
             ))}
@@ -192,7 +187,7 @@ const About = () => {
         </div>
 
         {/* {Team Section} */}
-        <div className="py-16 lg:pt-0">
+        <div className="lg:py-20 py-10 bg-base-300">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             {/* Centered Heading */}
             <AnimatedSection variants={bounceIn}>
@@ -292,7 +287,7 @@ const About = () => {
         </div>
 
         {/* {Tech Stack Section} */}
-        <div className="px-4 sm:px-6 mb-4 text-center">
+        <div className="py-10 text-center w-full mx-auto px-4 sm:px-8 lg:px-12">
           <AnimatedSection variants={bounceIn} >
             <h2 className="text-3xl font-bold mb-4">Our Tech Stack</h2>
             <p className="text-lg md:text-2xl text-base-content/80 max-w-2xl mx-auto mb-10 leading-relaxed">
@@ -314,7 +309,7 @@ const About = () => {
                 whileTap={{ scale: 0.95 }} >
                 <div
                   key={tech.name}
-                  className="card bg-base-200 border border-base-content/10 shadow-lg p-5 rounded-2xl group hover:shadow-xl hover:scale-[1.03] relative mb-3"
+                  className="card bg-base-300 border border-base-content/10 shadow-lg p-5 rounded-2xl group hover:shadow-xl hover:scale-[1.03] relative mb-3"
                 >
                   <div className="absolute inset-0 bg-primary/5 opacity-0 group-hover:opacity-100 rounded-2xl pointer-events-none" />
                   <motion.div

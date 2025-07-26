@@ -26,7 +26,7 @@ const Testimonials = () => {
                 <AnimatedSection variants={bounceIn}>
                     <h1 className="text-3xl md:text-5xl font-bold text-center mb-10">
                         What Our <span className="text-primary">Clients Say</span>
-                        <hr className="border-primary max-w-72 mx-auto mt-2" />
+                        <hr className="border-primary max-w-40 mx-auto mt-2" />
                     </h1>
                 </AnimatedSection>
                 <AnimatedSection variants={bounceIn}>
@@ -51,7 +51,7 @@ const Testimonials = () => {
                             whileHover={{ scale: 1.02 }}
                             whileTap={{ scale: 0.96 }}
                         >
-                            <div className="bg-base-200 p-6 rounded-2xl shadow-md hover:shadow-xl border border-base-300 h-full">
+                            <div className="bg-base-300 p-6 rounded-2xl shadow-md hover:shadow-xl border border-base-300 h-full">
                                 <div className="flex items-center gap-4 mb-4">
                                     <div className="w-12 h-12 rounded-full bg-primary text-primary-content flex items-center justify-center text-lg font-bold shadow-md">
                                         {feedback.name.charAt(0).toUpperCase()}

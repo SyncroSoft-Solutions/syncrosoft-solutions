@@ -5,15 +5,15 @@ import { fadeInUp } from "../animations/sectionVariants";
 const AnimatedSection = ({
   children,
   className = "",
-  variants = fadeInUp,
-  as = "div",
-  amount = 0.3,
+  variants = fadeInUp,   
+  as = "div",            
+  amount = 0.3, 
   delay = 0,
   duration = 0.6,
   once = true,
   custom = null,
   whileHover,
-  whileTap,
+  whileTap
 }) => {
   const Component = motion[as] || motion.div;
   const ref = useRef(null);
@@ -37,7 +37,6 @@ const AnimatedSection = ({
               ...(variants.visible?.transition || {}),
               delay,
               duration,
-              ease: "easeOut", // smoother on mobile
             },
           },
         };
@@ -49,7 +48,7 @@ const AnimatedSection = ({
       animate={controls}
       variants={resolvedVariants}
       custom={custom}
-      className={`will-change-transform sm:will-change-auto ${className}`} // GPU optimized
+      className={`will-change-transform md:will-change-auto ${className}`} // GPU optimized
       whileHover={whileHover}
       whileTap={whileTap}
     >
@@ -58,4 +57,4 @@ const AnimatedSection = ({
   );
 };
 
-export default AnimatedSection;
+export default AnimatedSection; 

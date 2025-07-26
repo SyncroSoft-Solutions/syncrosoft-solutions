@@ -1,58 +1,45 @@
 export const fadeInUp = {
-  hidden: { opacity: 0, y: 40 },
+  hidden: { opacity: 0, y: 30 },
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.6, ease: "easeOut" },
+    transition: { duration: 0.5, ease: [0.4, 0, 0.2, 1] },
   },
 };
 
 export const fadeInDown = {
-  hidden: { opacity: 0, y: -40 },
+  hidden: { opacity: 0, y: -30 },
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.6, ease: "easeOut" },
+    transition: { duration: 0.5, ease: [0.4, 0, 0.2, 1] },
   },
 };
 
 export const fadeInLeft = {
-  hidden: {
-    opacity: 0,
-    x: -100,
-  },
+  hidden: { opacity: 0, x: -60 },
   visible: {
     opacity: 1,
     x: 0,
-    transition: {
-      duration: 0.8,
-      ease: [0.25, 0.8, 0.25, 1], // smoother ease
-    },
+    transition: { duration: 0.6, ease: [0.25, 0.8, 0.25, 1] },
   },
 };
 
 export const fadeInRight = {
-  hidden: {
-    opacity: 0,
-    x: 100,
-  },
+  hidden: { opacity: 0, x: 60 },
   visible: {
     opacity: 1,
     x: 0,
-    transition: {
-      duration: 0.8,
-      ease: [0.25, 0.8, 0.25, 1],
-    },
+    transition: { duration: 0.6, ease: [0.25, 0.8, 0.25, 1] },
   },
 };
 
-
 export const zoomIn = {
-  hidden: { opacity: 0, scale: 0.9 },
+  hidden: { opacity: 0, scale: 0.95 },
   visible: {
     opacity: 1,
     scale: 1,
-    transition: { duration: 0.9, ease: "easeOut" },
+    transition: { duration: 0.5, ease: [0.4, 0, 0.2, 1] },
   },
 };
 
@@ -61,40 +48,30 @@ export const zoomOut = {
   visible: {
     opacity: 1,
     scale: 1,
-    transition: { duration: 0.5, ease: "easeOut" },
+    transition: { duration: 0.5, ease: [0.4, 0, 0.2, 1] },
   },
 };
 
 export const slideInFromTop = {
-  hidden: { y: -100, opacity: 0 },
+  hidden: { opacity: 0, y: -100 },
   visible: {
-    y: 0,
     opacity: 1,
-    transition: { duration: 0.7, ease: "easeOut" },
+    y: 0,
+    transition: { duration: 0.6, ease: [0.42, 0, 0.58, 1] },
   },
 };
 
 export const slideInFromBottom = {
-  hidden: { y: 100, opacity: 0 },
+  hidden: { opacity: 0, y: 100 },
   visible: {
-    y: 0,
     opacity: 1,
-    transition: { duration: 0.7, ease: "easeOut" },
-  },
-};
-
-export const staggerContainer = {
-  hidden: {},
-  visible: {
-    transition: {
-      staggerChildren: 0.15,
-      delayChildren: 0.2,
-    },
+    y: 0,
+    transition: { duration: 0.6, ease: [0.42, 0, 0.58, 1] },
   },
 };
 
 export const scaleRotateIn = {
-  hidden: { opacity: 0, scale: 0.7, rotate: -15 },
+  hidden: { opacity: 0, scale: 0.8, rotate: -10 },
   visible: {
     opacity: 1,
     scale: 1,
@@ -104,13 +81,13 @@ export const scaleRotateIn = {
 };
 
 export const bounceIn = {
-  hidden: { opacity: 0, y: 100 },
+  hidden: { opacity: 0, y: 80 },
   visible: {
     opacity: 1,
     y: 0,
     transition: {
-      duration: 1,
-      ease: [0.68, -0.55, 0.27, 1.55], // bounce easing
+      duration: 0.6,
+      ease: [0.6, -0.28, 0.735, 0.045],
     },
   },
 };
@@ -122,77 +99,87 @@ export const bounceInUp = {
     y: 0,
     transition: {
       duration: 0.6,
-      ease: [0.68, -0.55, 0.27, 1.55],
+      ease: [0.6, -0.35, 0.27, 1.35],
     },
   },
 };
 
 export const bounceInDown = {
-  hidden: { opacity: 0, y: -100 },
+  hidden: { opacity: 0, y: -60 },
   visible: {
     opacity: 1,
     y: 0,
     transition: {
-      duration: 0.8,
-      ease: [0.68, -0.6, 0.32, 1.6],
+      duration: 0.6,
+      ease: [0.6, -0.35, 0.27, 1.35],
     },
   },
 };
 
 export const bounceInLeft = {
-  hidden: { opacity: 0, x: -100 },
+  hidden: { opacity: 0, x: -80 },
   visible: {
     opacity: 1,
     x: 0,
     transition: {
-      duration: 0.9,
-      ease: [0.68, -0.55, 0.27, 1.55],
+      duration: 0.7,
+      ease: [0.6, -0.28, 0.735, 0.045],
     },
   },
 };
 
 export const bounceInRight = {
-  hidden: { opacity: 0, x: 100 },
+  hidden: { opacity: 0, x: 80 },
   visible: {
     opacity: 1,
     x: 0,
     transition: {
-      duration: 0.9,
-      ease: [0.68, -0.55, 0.27, 1.55],
+      duration: 0.7,
+      ease: [0.6, -0.28, 0.735, 0.045],
     },
   },
 };
 
 export const bounceInScale = {
-  hidden: { opacity: 0, scale: 0.3 },
+  hidden: { opacity: 0, scale: 0.5 },
   visible: {
     opacity: 1,
     scale: 1,
     transition: {
-      duration: 0.8,
-      ease: [0.68, -0.55, 0.27, 1.55],
+      duration: 0.7,
+      ease: [0.6, -0.28, 0.735, 0.045],
     },
   },
 };
 
 export const bounceInRotate = {
-  hidden: { opacity: 0, rotate: -15, scale: 0.8 },
+  hidden: { opacity: 0, rotate: -12, scale: 0.9 },
   visible: {
     opacity: 1,
     rotate: 0,
     scale: 1,
     transition: {
-      duration: 1,
-      ease: [0.68, -0.6, 0.32, 1.6],
+      duration: 0.8,
+      ease: [0.6, -0.28, 0.735, 0.045],
+    },
+  },
+};
+
+export const staggerContainer = {
+  hidden: {},
+  visible: {
+    transition: {
+      staggerChildren: 0.1,
+      delayChildren: 0.1,
     },
   },
 };
 
 export const bounceStaggeredContainer = {
-  initial: {},
-  animate: {
+  hidden: {},
+  visible: {
     transition: {
-      staggerChildren: 0.12,
+      staggerChildren: 0.1,
       delayChildren: 0.1,
     },
   },
@@ -211,33 +198,10 @@ export const bounceStaggeredItem = (index = 0) => {
       x: 0,
       scale: 1,
       transition: {
-        duration: 0.6,
-        delay: index * 0.08,
-        ease: [0.68, -0.55, 0.27, 1.55],
+        duration: 0.5,
+        delay: index * 0.06,
+        ease: [0.6, -0.28, 0.735, 0.045],
       },
     },
   };
 };
-
-export const getCardVariants = (index = 0) => {
-  const isLeft = index % 2 === 0;
-  return {
-    initial: {
-      opacity: 0,
-      x: isLeft ? "-100vw" : "100vw",
-      scale: 0.95,
-    },
-    animate: {
-      opacity: 1,
-      x: 0,
-      scale: 1,
-      transition: {
-        duration: 0.6,
-        ease: "easeOut",
-        delay: index * 0.1,
-      },
-    },
-  };
-};
-
-

@@ -73,7 +73,7 @@ const Testimonials = () => {
         <AnimatedSection
           variants={bounceIn}
         >
-          <div className="max-w-xl mx-auto card bg-base-200 shadow-xl p-6 mb-12">
+          <div className="max-w-xl mx-auto card bg-base-300 shadow-xl p-6 mb-12">
             <h2 className="text-xl font-semibold mb-4">Leave Your Feedback</h2>
             <form onSubmit={handleSubmit} className="space-y-4">
               <div>
@@ -124,7 +124,7 @@ const Testimonials = () => {
                 whileHover={{ scale: 1 }}
                 whileTap={{ scale: 0.95 }}
               >
-                <div className="bg-base-200 p-6 rounded-2xl shadow-md hover:shadow-xl border border-base-300" >
+                <div className="bg-base-300 p-6 rounded-2xl shadow-md hover:shadow-xl border border-base-300" >
                   <div className="flex items-center gap-4 mb-4">
                     <div className="w-12 h-12 rounded-full bg-primary text-primary-content flex items-center justify-center text-lg font-bold shadow-md">
                       {feedback.name.charAt(0).toUpperCase()}

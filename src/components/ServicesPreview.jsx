@@ -44,13 +44,13 @@ const ServicesPreview = () => {
   const yParallax = useTransform(scrollYProgress, [0, 1], [0, -50]);
 
   return (
-    <section className="w-full max-w-7xl mx-auto px-4 sm:px-8 lg:px-12 py-10">
+    <section className="w-full max-w-7xl bg-base-300 mx-auto px-4 sm:px-8 lg:px-12 py-10">
       {/* Centered Heading */}
       <AnimatedSection variants={bounceIn}>
         <h2 className="text-3xl md:text-5xl font-bold text-center text-base-content leading-snug mb-16">
           Our{` `}
           <span className="text-primary">Services</span>
-          <hr className="border-primary max-w-72 mx-auto mt-2" />
+          <hr className="border-primary max-w-40 mx-auto mt-2" />
         </h2>
       </AnimatedSection>
 
@@ -106,7 +106,7 @@ const ServicesPreview = () => {
               custom={index}
               whileHover={{ scale: 1 }}
               whileTap={{ scale: 0.95 }}
-              className="card bg-base-200 border border-base-content/10 shadow-lg p-5 mb-5 rounded-2xl group hover:shadow-xl relative"
+              className="card bg-base-100 border border-base-content/10 shadow-lg p-5 mb-5 rounded-2xl group hover:shadow-xl relative"
             >
               {/* Hover Glow */}
               <div className="absolute inset-0 bg-primary/5 opacity-0 group-hover:opacity-100 rounded-2xl pointer-events-none" />

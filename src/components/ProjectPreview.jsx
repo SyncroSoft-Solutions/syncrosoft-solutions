@@ -18,7 +18,7 @@ const project = {
 
 const ProjectPreview = () => {
   return (
-    <section className="flex items-center justify-center bg-base-100 text-base-content relative overflow-hidden">
+    <section className="flex items-center justify-center bg-base-200 text-base-content relative overflow-hidden">
       <div className="w-full max-w-7xl mx-auto px-4 sm:px-8 lg:px-12 py-10 space-y-10">
 
         {/* Heading */}
@@ -27,7 +27,7 @@ const ProjectPreview = () => {
             <h2 className="text-3xl md:text-5xl font-extrabold">
               Our <span className="text-primary">Team Work</span>
             </h2>
-            <hr className="border-primary max-w-72 mx-auto mt-2" />
+            <hr className="border-primary max-w-40 mx-auto mt-2" />
           </div>
         </AnimatedSection>
 

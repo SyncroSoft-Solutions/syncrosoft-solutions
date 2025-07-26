@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import AnimatedSection from "./AnimatedSection";
 import Typingtext from "./Typingtext";
-import { bounceIn, fadeInLeft, fadeInRight, fadeInUp } from "../animations/sectionVariants";
+import { bounceIn, fadeInLeft, fadeInRight } from "../animations/sectionVariants";
 
 const Hero = () => {
   return (
@@ -33,7 +33,7 @@ const Hero = () => {
           />
         </AnimatedSection>
 
-        <div className="grid mb-0 lg:mb-10 grid-cols-1 lg:grid-cols-2 gap-10 relative">
+        <div className="grid mb-10 lg:mb-32 grid-cols-1 lg:grid-cols-2 gap-10 relative">
           {/* Divider (only on large screens) */}
           <div className="hidden lg:block absolute left-1/2 top-0 h-full w-px bg-base-content/10" />
 
@@ -67,7 +67,7 @@ const Hero = () => {
 
           {/* Right Column */}
           <AnimatedSection variants={fadeInRight}>
-            <p className="text-lg text-start md:text-xl text-base-content/80 mb-10 leading-relaxed">
+            <p className="text-xl text-start md:text-2xl text-base-content/90 mb-6 leading-relaxed">
               From{" "}
               <span className="font-semibold text-info">static websites</span>{" "}
               to{" "}
@@ -82,16 +82,15 @@ const Hero = () => {
             </p>
           </AnimatedSection>
         </div>
-        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-          <AnimatedSection variants={fadeInUp}>
+        <div className="flex flex-col gap-4 justify-center items-center">
+          <AnimatedSection variants={fadeInLeft}>
             <Link to="/projects">
               <button className="btn btn-primary rounded-full px-8 text-base flex items-center gap-2 group shadow-lg hover:bg-primary/90 hover:shadow-xl">
                 Let’s turn your ideas into reality
               </button>
             </Link>
           </AnimatedSection>
-          <AnimatedSection variants={fadeInUp}>
-
+          <AnimatedSection variants={fadeInRight}>
             <Link to="/contact">
               <button className="btn btn-outline btn-primary rounded-full px-8 text-base flex items-center gap-2 group shadow hover:border-primary/80 hover:text-primary">
                 Contact us today
