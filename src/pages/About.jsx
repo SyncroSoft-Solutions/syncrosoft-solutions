@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import SEO from "../components/SEO";
 import AnimatedSection from "../components/AnimatedSection";
 import AnimatedBackground from "../components/AnimatedBackground";
-import { bounceIn, bounceStaggeredContainer, bounceStaggeredItem, fadeInLeft, fadeInRight, fadeInUp, staggerContainer } from "../animations/sectionVariants.js";
+import { bounceIn, bounceStaggeredContainer, bounceStaggeredItem, fadeInLeft, fadeInRight, fadeInUp } from "../animations/sectionVariants.js";
 
 import samarth from "../assets/team/samarth.jpeg";
 import rutika from "../assets/team/rutika.jpeg";
@@ -166,25 +166,27 @@ const About = () => {
           </AnimatedSection>
 
           {/* Stats Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 px-4 sm:px-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3   gap-8 px-4 sm:px-6">
             {[
-              { label: "Clients", end: 100 },
-              { label: "Projects", end: 100 },
-              { label: "Team Members", end: 10 },
-            ].map((stat, i) => (
-              <motion.div
-                key={stat.label}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: i * 0.2 }}
-                viewport={{ once: true }}
-                className="text-center"
-              >
-                <h4 className="text-4xl font-bold text-primary">
-                  <CountUp end={stat.end} duration={3} />+
-                </h4>
-                <p className="text-lg font-semibold text-base-content/80 mt-1">{stat.label}</p>
-              </motion.div>
+              { label: "Our Clients", end: 20 },
+              { label: "Our Projects", end: 5 },
+              { label: "Team Members", end: 7 },
+            ].map((stat) => (
+              <AnimatedSection variants={bounceIn}>
+                <div
+                  key={stat.label}
+                  className="card bg-gradient-to-br from-primary/10 via-base-100 to-base-200 border border-base-content/5 shadow-lg rounded-xl hover:shadow-xl"
+                >
+                  <div className="card-body p-5 items-center text-center">
+                    <h4 className="text-3xl lg:text-5xl font-extrabold text-primary">
+                      <CountUp end={stat.end} duration={9.5} />+
+                    </h4>
+                    <p className="text-lg lg:text-xl font-semibold text-base-content/70 mt-1">
+                      {stat.label}
+                    </p>
+                  </div>
+                </div>
+              </AnimatedSection>
             ))}
           </div>
         </div>
@@ -249,40 +251,40 @@ const About = () => {
               {/* === TEAM GRID === */}
               <div className="md:pl-10">
                 <AnimatedSection
-                  variants={staggerContainer}
+                  variants={bounceStaggeredContainer}
+                  initial="initial"
+                  whileInView="animate"
+                  viewport={{ once: true }}
+                  className="grid grid-cols-2 sm:grid-cols-3 gap-4 md:gap-6 justify-center"
                 >
-                  <motion.div
-                    initial={{ opacity: 0, y: 50 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8 }}
-                    viewport={{ once: true }}
-                    className="grid grid-cols-2 sm:grid-cols-3 gap-4 md:gap-6 justify-center"
-                  >
-                    {teamMembers.map((member) => (
-                      <AnimatedSection
-                        variants={bounceIn}
+                  {teamMembers.map((member, index) => (
+                    <AnimatedSection
+                      key={index}
+                      variants={bounceStaggeredItem}
+                      custom={index}
+                      whileHover={{ scale: 1 }}
+                      whileTap={{ scale: 0.95 }}
+                    >
+                      <div
+                        key={member.id}
+                        className="flex flex-col gap-2 items-center text-center group transition-transform duration-300"
                       >
-                        <div
-                          key={member.id}
-                          className="flex flex-col gap-2 items-center text-center group transition-transform duration-300"
-                        >
-                          <img
-                            src={member.image}
-                            alt={member.name}
-                            className="w-20 h-20 md:w-24 md:h-24 rounded-full object-cover shadow-lg ring-4 ring-primary ring-offset-2 ring-offset-base-100 group-hover:scale-105 transition-transform duration-300"
-                          />
-                          <div className="flex flex-col gap-0.5">
-                            <div className="font-semibold text-base-content text-sm md:text-base">
-                              {member.name}
-                            </div>
-                            <div className="text-xs md:text-sm text-base-content/70 font-medium">
-                              {member.role}
-                            </div>
+                        <img
+                          src={member.image}
+                          alt={member.name}
+                          className="w-20 h-20 md:w-24 md:h-24 rounded-full object-cover shadow-lg ring-4 ring-primary ring-offset-2 ring-offset-base-100 group-hover:scale-105 transition-transform duration-300"
+                        />
+                        <div className="flex flex-col gap-0.5">
+                          <div className="font-semibold text-base-content text-sm md:text-base">
+                            {member.name}
+                          </div>
+                          <div className="text-xs md:text-sm text-base-content/70 font-medium">
+                            {member.role}
                           </div>
                         </div>
-                      </AnimatedSection>
-                    ))}
-                  </motion.div>
+                      </div>
+                    </AnimatedSection>
+                  ))}
                 </AnimatedSection>
               </div>
             </div>

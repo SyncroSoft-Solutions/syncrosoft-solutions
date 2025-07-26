@@ -25,7 +25,7 @@ const projects = [
       "A real-time MERN chat app with secure authentication, protected routes, and active user tracking.",
     github: "https://github.com/Ajay120503/chat-app",
     live: "https://chat-app-q8ci.onrender.com/",
-  },
+  }
 ];
 
 const badgeColors = [
@@ -55,7 +55,7 @@ const Projects = () => {
         <h1
           className="text-3xl md:text-5xl lg:text-6xl font-bold text-center text-base-content mb-16"
         >
-          Syncing Strategy with <span className="text-primary">Scalable Solutions</span>
+          Our <span className="text-primary">Scalable Solutions</span>
         </h1>
         </AnimatedSection>
 

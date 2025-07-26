@@ -26,6 +26,7 @@ const Testimonials = () => {
                 <AnimatedSection variants={bounceIn}>
                     <h1 className="text-3xl md:text-5xl font-bold text-center mb-10">
                         What Our <span className="text-primary">Clients Say</span>
+                        <hr className="border-primary max-w-72 mx-auto mt-2" />
                     </h1>
                 </AnimatedSection>
                 <AnimatedSection variants={bounceIn}>

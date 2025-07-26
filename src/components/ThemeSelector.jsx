@@ -11,7 +11,7 @@ function ThemeSelector() {
       {/* Trigger Button */}
       <button
         tabIndex={0}
-        className="btn btn-circle btn-md transition backdrop-blur-md bg-base-300/40 hover:bg-white/20 border border-white/10 shadow-md"
+        className="btn btn-circle btn-md transition backdrop-blur-md bg-base-200/40 hover:bg-white/20 border border-white/10 shadow-md"
         aria-label="Theme selector"
       >
         <PaletteIcon size={18} />

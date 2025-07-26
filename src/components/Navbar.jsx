@@ -13,6 +13,7 @@ import {
   Star,
 } from "lucide-react";
 
+// Full nav list for mobile
 const navItems = [
   { name: "Home", path: "/", icon: Home },
   { name: "About Us", path: "/about", icon: Info },
@@ -20,6 +21,13 @@ const navItems = [
   { name: "Projects", path: "/projects", icon: Layout },
   { name: "Team", path: "/team", icon: Users },
   { name: "Testimonials", path: "/testimonials", icon: Star },
+  { name: "Contact", path: "/contact", icon: MessageCircle },
+];
+
+// Minimal list for desktop
+const desktopNavItems = [
+  { name: "Home", path: "/", icon: Home },
+  { name: "About Us", path: "/about", icon: Info },
   { name: "Contact", path: "/contact", icon: MessageCircle },
 ];
 
@@ -50,23 +58,21 @@ const Navbar = () => {
           <Logo />
         </div>
 
-        {/* Desktop Nav */}
+        {/* Desktop Nav (limited items) */}
         <motion.nav
           className="hidden lg:flex items-center gap-10"
           initial="hidden"
           animate="visible"
         >
-          {navItems.map(({ name, path }) => (
-            <motion.div
-              key={name}
-              variants={navItemVariants}
-            >
+          {desktopNavItems.map(({ name, path }) => (
+            <motion.div key={name} variants={navItemVariants}>
               <Link
                 to={path}
-                className={`text-[17px] font-medium transition duration-300 ${location.pathname === path
+                className={`text-[17px] font-medium transition duration-300 ${
+                  location.pathname === path
                     ? "text-primary border-b-2 border-primary pb-1"
                     : "hover:text-primary"
-                  }`}
+                }`}
               >
                 {name}
               </Link>
@@ -81,14 +87,12 @@ const Navbar = () => {
             onClick={() => setMenuOpen(!menuOpen)}
             aria-label="Toggle mobile menu"
           >
-            <div className="lg:hidden">
-              <AnimatedBurgerButton menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
-            </div>
+            <AnimatedBurgerButton menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
           </button>
         </div>
       </div>
 
-      {/* Mobile Menu */}
+      {/* Mobile Menu (full items) */}
       <AnimatePresence>
         {menuOpen && (
           <motion.div
@@ -105,10 +109,11 @@ const Navbar = () => {
                   <Link
                     to={path}
                     onClick={() => setMenuOpen(false)}
-                    className={`flex items-center gap-3 text-lg font-medium transition duration-300 ${location.pathname === path
+                    className={`flex items-center gap-3 text-lg font-medium transition duration-300 ${
+                      location.pathname === path
                         ? "text-primary border-b-2 border-primary pb-1"
                         : "hover:text-primary"
-                      }`}
+                    }`}
                   >
                     <Icon size={20} />
                     {name}

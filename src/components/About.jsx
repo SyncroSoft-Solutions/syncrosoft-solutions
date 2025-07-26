@@ -11,6 +11,7 @@ const About = () => {
           <AnimatedSection variants={bounceIn}>
             <h2 className="text-3xl md:text-5xl font-bold text-center mb-10">
               Who <span className="text-primary">We Are</span>
+              <hr className="border-primary max-w-72 mx-auto mt-2" />
             </h2>
           </AnimatedSection>
 

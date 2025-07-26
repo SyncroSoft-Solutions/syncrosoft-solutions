@@ -9,7 +9,7 @@ const Loader = () => {
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       transition={{ duration: 0.6, ease: "easeOut" }}
-      className="fixed inset-0 z-[100] bg-base-100 flex flex-col items-center justify-center space-y-6"
+      className="fixed inset-0 z-[100] bg-base-200 flex flex-col items-center justify-center space-y-6"
     >
       {/* Heartbeat pulsing effect */}
       <motion.div

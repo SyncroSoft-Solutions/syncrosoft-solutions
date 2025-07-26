@@ -8,7 +8,6 @@ import Contact from "./pages/Contact.jsx";
 import Projects from "./pages/Projects.jsx";
 import Testimonials from "./pages/Testimonials.jsx";
 import Team from "./pages/Team.jsx";
-import RouteChanger from "./components/RouteChanger.jsx";
 
 function AppContent() {
   const navigate = useNavigate();
@@ -64,7 +63,6 @@ function AppContent() {
         <Route path="/testimonials" element={<Testimonials />} />
         <Route path="/contact" element={<Contact />} />
       </Routes>
-      <RouteChanger />
     </>
   );
 }

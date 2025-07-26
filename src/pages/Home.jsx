@@ -6,6 +6,7 @@ import AnimatedBackground from '../components/AnimatedBackground';
 import Testimonials from '../components/Testimonials';
 import ServicesPreview from '../components/ServicesPreview';
 import Footer from '../components/Footer';
+import ProjectPreview from '../components/ProjectPreview';
 
 function Home() {
 
@@ -21,6 +22,7 @@ function Home() {
         <Hero />
         <About />
         <ServicesPreview />
+        <ProjectPreview />
         <Testimonials />
         <Footer />
       </div>

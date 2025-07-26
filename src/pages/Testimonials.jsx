@@ -122,7 +122,7 @@ const Testimonials = () => {
                 variants={bounceStaggeredItem}
                 custom={index}
                 whileHover={{ scale: 1 }}
-                whileTap={{ scale: 0.5 }}
+                whileTap={{ scale: 0.95 }}
               >
                 <div className="bg-base-200 p-6 rounded-2xl shadow-md hover:shadow-xl border border-base-300" >
                   <div className="flex items-center gap-4 mb-4">

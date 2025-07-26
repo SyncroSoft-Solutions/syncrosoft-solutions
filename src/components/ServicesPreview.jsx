@@ -48,8 +48,9 @@ const ServicesPreview = () => {
       {/* Centered Heading */}
       <AnimatedSection variants={bounceIn}>
         <h2 className="text-3xl md:text-5xl font-bold text-center text-base-content leading-snug mb-16">
-          Web Development and Digital Solutions <br />
-          <span className="text-primary">Tailored to Your Needs</span>
+          Our{` `}
+          <span className="text-primary">Services</span>
+          <hr className="border-primary max-w-72 mx-auto mt-2" />
         </h2>
       </AnimatedSection>
 
@@ -83,7 +84,7 @@ const ServicesPreview = () => {
 
           <AnimatedSection variants={bounceIn}>
             <Link to="/services">
-              <button className="btn btn-outline btn-primary rounded-full px-6 pt-2 lg:mb-0 mb-10 text-base font-semibold flex items-center gap-2">
+              <button className="btn btn-primary rounded-full px-6 lg:mb-0 mb-10 text-base font-semibold flex items-center">
                 Explore All Services
               </button>
             </Link>

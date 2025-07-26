@@ -2,7 +2,7 @@ import React from "react";
 import { motion } from "framer-motion";
 
 // Number of stars
-const starCount = 80;
+const starCount = 60;
 
 // DaisyUI theme hex values (you can customize this if you change your theme)
 const themeColors = [
