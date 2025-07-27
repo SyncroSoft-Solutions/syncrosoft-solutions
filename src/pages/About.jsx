@@ -173,7 +173,7 @@ const About = () => {
               { label: "Team Members", end: 7 },
             ].map((stat) => (
               <AnimatedSection key={stat.label} variants={bounceIn}>
-                <div className="flex flex-col items-center justify-center text-center p-6 rounded-xl shadow-sm bg-base-100 hover:shadow-md transition duration-300">
+                <div className="flex flex-col items-center justify-center text-center p-2 rounded-xl shadow-sm bg-base-100 hover:shadow-md transition duration-300">
                   <h4 className="text-3xl lg:text-5xl font-extrabold text-primary">
                     <CountUp end={stat.end} duration={9.5} />+
                   </h4>

@@ -3,7 +3,7 @@ import { ExternalLink } from "lucide-react";
 import { Link } from "react-router-dom";
 import project1 from "../assets/projects/FUNCHAT.png";
 import AnimatedSection from "../components/AnimatedSection";
-import { bounceIn, fadeInLeft, fadeInRight } from "../animations/sectionVariants";
+import { bounceIn, fadeInRight, slideInFromBottom } from "../animations/sectionVariants";
 
 const badgeColors = ["primary", "secondary", "accent", "info", "success", "warning", "error"];
 
@@ -35,7 +35,7 @@ const ProjectPreview = () => {
         <div className="grid md:grid-cols-2 gap-10 items-center relative">
 
           {/* Left Content */}
-          <AnimatedSection variants={fadeInLeft}>
+          <AnimatedSection variants={slideInFromBottom}>
             <div className="space-y-6 relative z-10">
               <h3 className="text-2xl font-bold text-base-content">{project.name}</h3>
               <p className="text-base-content/80 text-sm leading-relaxed">

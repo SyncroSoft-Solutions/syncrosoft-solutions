@@ -1,57 +1,71 @@
 import React from 'react';
-import { useThemeStore } from '../store/useThemeStore.js';
-import { PaletteIcon, CheckIcon } from 'lucide-react';
 import { THEMES } from '../constants';
+import { useThemeStore } from '../store/useThemeStore';
+import {
+  MoonIcon,
+  Eclipse,
+  SunIcon,
+  SparklesIcon,
+  FlameIcon,
+  PaletteIcon,
+  MountainIcon,
+  CloudSunIcon,
+  Sunset,
+  Lightbulb,
+  Ghost,
+} from 'lucide-react';
 
-function ThemeSelector() {
+const ICONS = {
+  light: <SunIcon size={18} />,
+  dark: <Eclipse size={18} />,
+  forest: <MountainIcon size={18} />,
+  synthwave: <SparklesIcon size={18} />,
+  cyberpunk: <FlameIcon size={18} />,
+  halloween: <Ghost size={18} />,
+  dracula: <CloudSunIcon size={18} />,
+  night: <MoonIcon size={18} />,
+  dim: <Lightbulb size={18} />,
+  sunset: <Sunset size={18} />,
+};
+
+const ThemeSelector = () => {
   const { theme, setTheme } = useThemeStore();
 
-  return (
-    <div className="dropdown dropdown-end drop-shadow-xl z-50">
-      {/* Trigger Button */}
-      <button
-        tabIndex={0}
-        className="btn btn-circle btn-md transition backdrop-blur-md bg-base-200/40 hover:bg-white/20 border border-white/10 shadow-md"
-        aria-label="Theme selector"
-      >
-        <PaletteIcon size={18} />
-      </button>
+  const currentIndex = THEMES.findIndex((t) => t.name === theme);
+  const total = THEMES.length;
 
-      {/* Dropdown Content */}
-      <div
-        tabIndex={0}
-        className="dropdown-content mt-2 p-2 shadow-xl bg-base-300/70 backdrop-blur-2xl rounded-2xl
-        w-56 max-h-60 overflow-y-auto border border-white/10"
-      >
-        <div className="space-y-1">
-          {THEMES.map((themeOption) => (
-            <button
-              key={themeOption.name}
-              onClick={() => setTheme(themeOption.name)}
-              className={`w-full px-3 py-2 rounded-xl flex items-center gap-2 transition-colors
-              ${theme === themeOption.name
-                  ? 'bg-primary/10 text-primary'
-                  : 'hover:bg-white/10 text-base-content/80'
+  // Show current + next theme in list
+  const visibleThemes = [
+    THEMES[(currentIndex - 1 + total) % total], // previous
+    THEMES[currentIndex],                      // current
+    THEMES[(currentIndex + 1) % total],        // next
+  ];
+
+  const handleThemeClick = (selectedTheme) => {
+    setTheme(selectedTheme.name);
+  };
+
+  return (
+    <div className="flex gap-3 p-2 bg-base-300/60 backdrop-blur-md border border-white/10 rounded-full shadow-xl">
+      {visibleThemes.map((t) => {
+        const isActive = theme === t.name;
+        return (
+          <button
+            key={t.name}
+            onClick={() => handleThemeClick(t)}
+            className={`btn btn-xs btn-circle border transition-all duration-300
+              ${isActive
+                ? 'bg-primary text-primary-content ring-2 ring-primary scale-110 shadow-md'
+                : 'bg-base-100 text-base-content/80 hover:bg-base-200'
               }`}
-            >
-              <PaletteIcon className="size-4 opacity-70" />
-              <span className="font-medium">{themeOption.name}</span>
-              <div className="ml-auto flex gap-1">
-                {themeOption.colors.map((color, i) => (
-                  <span
-                    key={i}
-                    className="w-2.5 h-2.5 rounded-full"
-                    style={{ backgroundColor: color }}
-                  />
-                ))}
-              </div>
-              {theme === themeOption.name && <CheckIcon className="size-4 ml-1" />}
-            </button>
-          ))}
-        </div>
-      </div>
+            aria-label={`Switch to ${t.label}`}
+          >
+            {ICONS[t.name] || <PaletteIcon size={18} />}
+          </button>
+        );
+      })}
     </div>
   );
-}
+};
 
 export default ThemeSelector;

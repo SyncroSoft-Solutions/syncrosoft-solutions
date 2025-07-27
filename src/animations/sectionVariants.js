@@ -200,7 +200,7 @@ export const bounceStaggeredItem = (index = 0) => {
       transition: {
         duration: 0.5,
         delay: index * 0.06,
-        ease: [0.6, -0.28, 0.735, 0.045],
+        ease: [0.68, -0.55, 0.27, 1.55],
       },
     },
   };
